@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.alankin.mapper.UserBaseMapper">
+
+	<!-- 结果Map -->
+	<resultMap id="BaseResultMap" type="com.alankin.entity.UserBaseEntity">
+		<result property="uid" jdbcType="VARCHAR" column="uid"/>
+		<result property="userRole" jdbcType="TINYINT" column="user_role"/>
+		<result property="registerSource" jdbcType="TINYINT" column="register_source"/>
+		<result property="userName" jdbcType="VARCHAR" column="user_name"/>
+		<result property="nickName" jdbcType="VARCHAR" column="nick_name"/>
+		<result property="gender" jdbcType="TINYINT" column="gender"/>
+		<result property="birthday" jdbcType="BIGINT" column="birthday"/>
+		<result property="signature" jdbcType="VARCHAR" column="signature"/>
+		<result property="mobile" jdbcType="VARCHAR" column="mobile"/>
+		<result property="mobileBindTime" jdbcType="INTEGER" column="mobile_bind_time"/>
+		<result property="email" jdbcType="VARCHAR" column="email"/>
+		<result property="emailBindTime" jdbcType="INTEGER" column="email_bind_time"/>
+		<result property="face" jdbcType="VARCHAR" column="face"/>
+		<result property="face200" jdbcType="VARCHAR" column="face200"/>
+		<result property="srcface" jdbcType="VARCHAR" column="srcface"/>
+		<result property="createTime" jdbcType="TIMESTAMP" column="create_time"/>
+		<result property="updateTime" jdbcType="TIMESTAMP" column="update_time"/>
+		<result property="pushToken" jdbcType="VARCHAR" column="push_token"/>
+	</resultMap>
+	
+	<!-- 查询列 -->
+	<sql id="BaseColumnList">
+		uid,user_role,register_source,user_name,nick_name,gender,birthday,signature,mobile,mobile_bind_time,email,email_bind_time,face,face200,srcface,create_time,update_time,push_token
+	</sql>
+			
+	<!--创建记录 -->
+	<insert id="create" parameterType="com.alankin.entity.UserBaseEntity" useGeneratedKeys="true" keyProperty="uid">
+		INSERT INTO user_base
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uid!=null">uid,</if>
+			<if test="userRole!=null">user_role,</if>
+			<if test="registerSource!=null">register_source,</if>
+			<if test="userName!=null">user_name,</if>
+			<if test="nickName!=null">nick_name,</if>
+			<if test="gender!=null">gender,</if>
+			<if test="birthday!=null">birthday,</if>
+			<if test="signature!=null">signature,</if>
+			<if test="mobile!=null">mobile,</if>
+			<if test="mobileBindTime!=null">mobile_bind_time,</if>
+			<if test="email!=null">email,</if>
+			<if test="emailBindTime!=null">email_bind_time,</if>
+			<if test="face!=null">face,</if>
+			<if test="face200!=null">face200,</if>
+			<if test="srcface!=null">srcface,</if>
+			<if test="createTime!=null">create_time,</if>
+			<if test="updateTime!=null">update_time,</if>
+			<if test="pushToken!=null">push_token</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+			<if test="uid!=null">#{uid,jdbcType=VARCHAR},</if>
+			<if test="userRole!=null">#{userRole,jdbcType=TINYINT},</if>
+			<if test="registerSource!=null">#{registerSource,jdbcType=TINYINT},</if>
+			<if test="userName!=null">#{userName,jdbcType=VARCHAR},</if>
+			<if test="nickName!=null">#{nickName,jdbcType=VARCHAR},</if>
+			<if test="gender!=null">#{gender,jdbcType=TINYINT},</if>
+			<if test="birthday!=null">#{birthday,jdbcType=BIGINT},</if>
+			<if test="signature!=null">#{signature,jdbcType=VARCHAR},</if>
+			<if test="mobile!=null">#{mobile,jdbcType=VARCHAR},</if>
+			<if test="mobileBindTime!=null">#{mobileBindTime,jdbcType=INTEGER},</if>
+			<if test="email!=null">#{email,jdbcType=VARCHAR},</if>
+			<if test="emailBindTime!=null">#{emailBindTime,jdbcType=INTEGER},</if>
+			<if test="face!=null">#{face,jdbcType=VARCHAR},</if>
+			<if test="face200!=null">#{face200,jdbcType=VARCHAR},</if>
+			<if test="srcface!=null">#{srcface,jdbcType=VARCHAR},</if>
+			<if test="createTime!=null">#{createTime,jdbcType=TIMESTAMP},</if>
+			<if test="updateTime!=null">#{updateTime,jdbcType=TIMESTAMP},</if>
+			<if test="pushToken!=null">#{pushToken,jdbcType=VARCHAR}</if>
+		</trim>
+	</insert>
+
+	<!--批量创建记录 -->
+	<insert id="batchSave" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="uid" >
+		<foreach collection="list" item="item" index="index" separator=";">
+			INSERT INTO user_base
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+					<if test="item.uid!=null">uid,</if>
+					<if test="item.userRole!=null">user_role,</if>
+					<if test="item.registerSource!=null">register_source,</if>
+					<if test="item.userName!=null">user_name,</if>
+					<if test="item.nickName!=null">nick_name,</if>
+					<if test="item.gender!=null">gender,</if>
+					<if test="item.birthday!=null">birthday,</if>
+					<if test="item.signature!=null">signature,</if>
+					<if test="item.mobile!=null">mobile,</if>
+					<if test="item.mobileBindTime!=null">mobile_bind_time,</if>
+					<if test="item.email!=null">email,</if>
+					<if test="item.emailBindTime!=null">email_bind_time,</if>
+					<if test="item.face!=null">face,</if>
+					<if test="item.face200!=null">face200,</if>
+					<if test="item.srcface!=null">srcface,</if>
+					<if test="item.createTime!=null">create_time,</if>
+					<if test="item.updateTime!=null">update_time,</if>
+					<if test="item.pushToken!=null">push_token</if>
+			</trim>
+			<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+					<if test="item.uid!=null">#{item.uid,jdbcType=VARCHAR},</if>
+					<if test="item.userRole!=null">#{item.userRole,jdbcType=TINYINT},</if>
+					<if test="item.registerSource!=null">#{item.registerSource,jdbcType=TINYINT},</if>
+					<if test="item.userName!=null">#{item.userName,jdbcType=VARCHAR},</if>
+					<if test="item.nickName!=null">#{item.nickName,jdbcType=VARCHAR},</if>
+					<if test="item.gender!=null">#{item.gender,jdbcType=TINYINT},</if>
+					<if test="item.birthday!=null">#{item.birthday,jdbcType=BIGINT},</if>
+					<if test="item.signature!=null">#{item.signature,jdbcType=VARCHAR},</if>
+					<if test="item.mobile!=null">#{item.mobile,jdbcType=VARCHAR},</if>
+					<if test="item.mobileBindTime!=null">#{item.mobileBindTime,jdbcType=INTEGER},</if>
+					<if test="item.email!=null">#{item.email,jdbcType=VARCHAR},</if>
+					<if test="item.emailBindTime!=null">#{item.emailBindTime,jdbcType=INTEGER},</if>
+					<if test="item.face!=null">#{item.face,jdbcType=VARCHAR},</if>
+					<if test="item.face200!=null">#{item.face200,jdbcType=VARCHAR},</if>
+					<if test="item.srcface!=null">#{item.srcface,jdbcType=VARCHAR},</if>
+					<if test="item.createTime!=null">#{item.createTime,jdbcType=TIMESTAMP},</if>
+					<if test="item.updateTime!=null">#{item.updateTime,jdbcType=TIMESTAMP},</if>
+					<if test="item.pushToken!=null">#{item.pushToken,jdbcType=VARCHAR}</if>
+			</trim>
+		</foreach>
+	</insert>
+	
+	<!-- 更新记录 -->
+	<update id="update" parameterType="com.alankin.entity.UserBaseEntity">
+		UPDATE user_base 
+		<set>
+			<if test="userRole!=null">user_role = #{userRole,jdbcType=TINYINT},</if>
+			<if test="registerSource!=null">register_source = #{registerSource,jdbcType=TINYINT},</if>
+			<if test="userName!=null">user_name = #{userName,jdbcType=VARCHAR},</if>
+			<if test="nickName!=null">nick_name = #{nickName,jdbcType=VARCHAR},</if>
+			<if test="gender!=null">gender = #{gender,jdbcType=TINYINT},</if>
+			<if test="birthday!=null">birthday = #{birthday,jdbcType=BIGINT},</if>
+			<if test="signature!=null">signature = #{signature,jdbcType=VARCHAR},</if>
+			<if test="mobile!=null">mobile = #{mobile,jdbcType=VARCHAR},</if>
+			<if test="mobileBindTime!=null">mobile_bind_time = #{mobileBindTime,jdbcType=INTEGER},</if>
+			<if test="email!=null">email = #{email,jdbcType=VARCHAR},</if>
+			<if test="emailBindTime!=null">email_bind_time = #{emailBindTime,jdbcType=INTEGER},</if>
+			<if test="face!=null">face = #{face,jdbcType=VARCHAR},</if>
+			<if test="face200!=null">face200 = #{face200,jdbcType=VARCHAR},</if>
+			<if test="srcface!=null">srcface = #{srcface,jdbcType=VARCHAR},</if>
+			<if test="createTime!=null">create_time = #{createTime,jdbcType=TIMESTAMP},</if>
+			<if test="updateTime!=null">update_time = #{updateTime,jdbcType=TIMESTAMP},</if>
+			<if test="pushToken!=null">push_token = #{pushToken,jdbcType=VARCHAR}</if>
+		</set>
+		<where> 
+			uid  = #{uid}
+		</where>				
+	</update>
+	
+	<!--批量更新记录 -->
+	<update id="batchUpdate" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" separator=";">
+			UPDATE user_base 
+			<set>
+				<if test="item.userRole!=null">user_role = #{item.userRole,jdbcType=TINYINT},</if>
+				<if test="item.registerSource!=null">register_source = #{item.registerSource,jdbcType=TINYINT},</if>
+				<if test="item.userName!=null">user_name = #{item.userName,jdbcType=VARCHAR},</if>
+				<if test="item.nickName!=null">nick_name = #{item.nickName,jdbcType=VARCHAR},</if>
+				<if test="item.gender!=null">gender = #{item.gender,jdbcType=TINYINT},</if>
+				<if test="item.birthday!=null">birthday = #{item.birthday,jdbcType=BIGINT},</if>
+				<if test="item.signature!=null">signature = #{item.signature,jdbcType=VARCHAR},</if>
+				<if test="item.mobile!=null">mobile = #{item.mobile,jdbcType=VARCHAR},</if>
+				<if test="item.mobileBindTime!=null">mobile_bind_time = #{item.mobileBindTime,jdbcType=INTEGER},</if>
+				<if test="item.email!=null">email = #{item.email,jdbcType=VARCHAR},</if>
+				<if test="item.emailBindTime!=null">email_bind_time = #{item.emailBindTime,jdbcType=INTEGER},</if>
+				<if test="item.face!=null">face = #{item.face,jdbcType=VARCHAR},</if>
+				<if test="item.face200!=null">face200 = #{item.face200,jdbcType=VARCHAR},</if>
+				<if test="item.srcface!=null">srcface = #{item.srcface,jdbcType=VARCHAR},</if>
+				<if test="item.createTime!=null">create_time = #{item.createTime,jdbcType=TIMESTAMP},</if>
+				<if test="item.updateTime!=null">update_time = #{item.updateTime,jdbcType=TIMESTAMP},</if>
+				<if test="item.pushToken!=null">push_token = #{item.pushToken,jdbcType=VARCHAR}</if>
+			</set>
+			<where> 
+				uid  = #{item.uid}
+			</where>	
+		</foreach>
+	</update>	
+	
+	
+	<!-- 按ID查询记录 -->
+	<select id="queryById" parameterType="long" resultMap="BaseResultMap">
+		SELECT <include refid="BaseColumnList" />
+		FROM user_base 
+		WHERE uid  = #{uid}	
+	</select>
+
+		<!-- 按ID查询记录 -->
+	<select id="queryByUid" parameterType="String" resultMap="BaseResultMap">
+	SELECT <include refid="BaseColumnList" />
+	FROM user_base
+	WHERE uid  = #{uid}
+	</select>
+	
+	<!-- 按Id删除 -->
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM user_base WHERE uid  = #{uid}
+	</delete>
+
+	<!-- 按Id批量删除 -->
+	<delete id="batchDeleteById" parameterType="Long[]">
+		DELETE FROM user_base WHERE uid in (
+		<foreach collection="array" item="item" separator=",">
+			#{item}
+		</foreach>
+		)
+	</delete>
+	
+	
+	<sql id="where">
+		<where>
+			1=1
+			<if test="uid!=null and uid!=''">AND t.uid = #{uid,jdbcType=VARCHAR}</if>
+			<if test="userRole!=null">AND t.user_role = #{userRole,jdbcType=TINYINT}</if>
+			<if test="registerSource!=null">AND t.register_source = #{registerSource,jdbcType=TINYINT}</if>
+			<if test="userName!=null and userName!=''">AND t.user_name = #{userName,jdbcType=VARCHAR}</if>
+			<if test="nickName!=null and nickName!=''">AND t.nick_name = #{nickName,jdbcType=VARCHAR}</if>
+			<if test="gender!=null">AND t.gender = #{gender,jdbcType=TINYINT}</if>
+			<if test="birthday!=null">AND t.birthday = #{birthday,jdbcType=BIGINT}</if>
+			<if test="signature!=null and signature!=''">AND t.signature = #{signature,jdbcType=VARCHAR}</if>
+			<if test="mobile!=null and mobile!=''">AND t.mobile = #{mobile,jdbcType=VARCHAR}</if>
+			<if test="mobileBindTime!=null">AND t.mobile_bind_time = #{mobileBindTime,jdbcType=INTEGER}</if>
+			<if test="email!=null and email!=''">AND t.email = #{email,jdbcType=VARCHAR}</if>
+			<if test="emailBindTime!=null">AND t.email_bind_time = #{emailBindTime,jdbcType=INTEGER}</if>
+			<if test="face!=null and face!=''">AND t.face = #{face,jdbcType=VARCHAR}</if>
+			<if test="face200!=null and face200!=''">AND t.face200 = #{face200,jdbcType=VARCHAR}</if>
+			<if test="srcface!=null and srcface!=''">AND t.srcface = #{srcface,jdbcType=VARCHAR}</if>
+			<if test="createTime!=null">AND t.create_time = #{createTime,jdbcType=TIMESTAMP}</if>
+			<if test="updateTime!=null">AND t.update_time = #{updateTime,jdbcType=TIMESTAMP}</if>
+			<if test="pushToken!=null and pushToken!=''">AND t.push_token = #{pushToken,jdbcType=VARCHAR}</if>
+		</where>
+	</sql>
+	
+	<sql id="queryFrom">
+		FROM user_base
+	</sql>
+	<!-- 查询Where语句 -->
+	<sql id="whereForLike">
+		<where>
+			1=1
+			<if test="whereCondition!=null">
+				<if test="whereCondition.uid!=null and whereCondition.uid!=''">AND t.uid like #{whereCondition.uidByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.userRole!=null">AND t.user_role = #{whereCondition.userRole,jdbcType=TINYINT}</if>
+				<if test="whereCondition.registerSource!=null">AND t.register_source = #{whereCondition.registerSource,jdbcType=TINYINT}</if>
+				<if test="whereCondition.userName!=null and whereCondition.userName!=''">AND t.user_name like #{whereCondition.userNameByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.nickName!=null and whereCondition.nickName!=''">AND t.nick_name like #{whereCondition.nickNameByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.gender!=null">AND t.gender = #{whereCondition.gender,jdbcType=TINYINT}</if>
+				<if test="whereCondition.birthday!=null">AND t.birthday = #{whereCondition.birthday,jdbcType=BIGINT}</if>
+				<if test="whereCondition.signature!=null and whereCondition.signature!=''">AND t.signature like #{whereCondition.signatureByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.mobile!=null and whereCondition.mobile!=''">AND t.mobile like #{whereCondition.mobileByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.mobileBindTime!=null">AND t.mobile_bind_time = #{whereCondition.mobileBindTime,jdbcType=INTEGER}</if>
+				<if test="whereCondition.email!=null and whereCondition.email!=''">AND t.email like #{whereCondition.emailByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.emailBindTime!=null">AND t.email_bind_time = #{whereCondition.emailBindTime,jdbcType=INTEGER}</if>
+				<if test="whereCondition.face!=null and whereCondition.face!=''">AND t.face like #{whereCondition.faceByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.face200!=null and whereCondition.face200!=''">AND t.face200 like #{whereCondition.face200ByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.srcface!=null and whereCondition.srcface!=''">AND t.srcface like #{whereCondition.srcfaceByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.createTime!=null">AND t.create_time = #{whereCondition.createTime,jdbcType=TIMESTAMP}</if>
+				<if test="whereCondition.updateTime!=null">AND t.update_time = #{whereCondition.updateTime,jdbcType=TIMESTAMP}</if>
+				<if test="whereCondition.pushToken!=null and whereCondition.pushToken!=''">AND t.push_token like #{whereCondition.pushTokenByLike,jdbcType=VARCHAR}</if>
+			</if>
+			<if test="keyWord!=null and keyWord!=''">
+				AND (
+						t.uid like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.user_name like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.nick_name like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.signature like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.mobile like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.email like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.face like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.face200 like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.srcface like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.push_token like #{keyWordByLike,jdbcType=VARCHAR} 
+					)
+			</if>
+			<if test="startTime!=null and startTime!=''">AND t.create_time &gt;= #{startTime}</if>
+			<if test="endTime!=null and endTime!=''">AND t.create_time &lt;= #{endTime}</if>
+		</where>
+	</sql>
+	
+	<!-- 按对象查询 -->
+	<select id="queryByEntity" parameterType="com.alankin.entity.UserBaseEntity" resultMap="BaseResultMap">
+		SELECT <include refid="BaseColumnList" />
+		<include refid="queryFrom" /> t
+		<include refid="where" />
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="queryByPage" parameterType="com.alankin.center.common.vo.ListVo.ListReqVO"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="BaseColumnList" />
+		<include refid="queryFrom" /> t
+		<include refid="whereForLike" />
+		<choose>
+			<when test="orderField==null">
+				ORDER BY uid DESC
+			</when>
+			<otherwise>
+				ORDER BY ${orderField}
+			</otherwise>
+		</choose>
+	</select>
+
+
+	<!-- 查询记录数 -->
+	<select id="queryCount" resultType="int"
+		parameterType="com.alankin.center.common.vo.ListVo.ListReqVO">
+		SELECT COUNT(1)  
+		<include refid="queryFrom" /> t
+		<include refid="whereForLike" />
+	</select>
+</mapper>
+

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.alankin.mapper.UserRegisterLogMapper">
+
+	<!-- 结果Map -->
+	<resultMap id="BaseResultMap" type="com.alankin.entity.UserRegisterLogEntity">
+		<result property="id" jdbcType="BIGINT" column="id"/>
+		<result property="uid" jdbcType="VARCHAR" column="uid"/>
+		<result property="registerMethod" jdbcType="TINYINT" column="register_method"/>
+		<result property="registerTime" jdbcType="INTEGER" column="register_time"/>
+		<result property="registerIp" jdbcType="VARCHAR" column="register_ip"/>
+		<result property="registerClient" jdbcType="VARCHAR" column="register_client"/>
+	</resultMap>
+	
+	<!-- 查询列 -->
+	<sql id="BaseColumnList">
+		id,uid,register_method,register_time,register_ip,register_client
+	</sql>
+			
+	<!--创建记录 -->
+	<insert id="create" parameterType="com.alankin.entity.UserRegisterLogEntity" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO user_register_log
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uid!=null">uid,</if>
+			<if test="registerMethod!=null">register_method,</if>
+			<if test="registerTime!=null">register_time,</if>
+			<if test="registerIp!=null">register_ip,</if>
+			<if test="registerClient!=null">register_client</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+			<if test="uid!=null">#{uid,jdbcType=VARCHAR},</if>
+			<if test="registerMethod!=null">#{registerMethod,jdbcType=TINYINT},</if>
+			<if test="registerTime!=null">#{registerTime,jdbcType=INTEGER},</if>
+			<if test="registerIp!=null">#{registerIp,jdbcType=VARCHAR},</if>
+			<if test="registerClient!=null">#{registerClient,jdbcType=VARCHAR}</if>
+		</trim>
+	</insert>
+
+	<!--批量创建记录 -->
+	<insert id="batchSave" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id" >
+		<foreach collection="list" item="item" index="index" separator=";">
+			INSERT INTO user_register_log
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+					<if test="item.uid!=null">uid,</if>
+					<if test="item.registerMethod!=null">register_method,</if>
+					<if test="item.registerTime!=null">register_time,</if>
+					<if test="item.registerIp!=null">register_ip,</if>
+					<if test="item.registerClient!=null">register_client</if>
+			</trim>
+			<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+					<if test="item.uid!=null">#{item.uid,jdbcType=VARCHAR},</if>
+					<if test="item.registerMethod!=null">#{item.registerMethod,jdbcType=TINYINT},</if>
+					<if test="item.registerTime!=null">#{item.registerTime,jdbcType=INTEGER},</if>
+					<if test="item.registerIp!=null">#{item.registerIp,jdbcType=VARCHAR},</if>
+					<if test="item.registerClient!=null">#{item.registerClient,jdbcType=VARCHAR}</if>
+			</trim>
+		</foreach>
+	</insert>
+	
+	<!-- 更新记录 -->
+	<update id="update" parameterType="com.alankin.entity.UserRegisterLogEntity">
+		UPDATE user_register_log 
+		<set>
+			<if test="uid!=null">uid = #{uid,jdbcType=VARCHAR},</if>
+			<if test="registerMethod!=null">register_method = #{registerMethod,jdbcType=TINYINT},</if>
+			<if test="registerTime!=null">register_time = #{registerTime,jdbcType=INTEGER},</if>
+			<if test="registerIp!=null">register_ip = #{registerIp,jdbcType=VARCHAR},</if>
+			<if test="registerClient!=null">register_client = #{registerClient,jdbcType=VARCHAR}</if>
+		</set>
+		<where> 
+			id  = #{id}
+		</where>				
+	</update>
+	
+	<!--批量更新记录 -->
+	<update id="batchUpdate" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" separator=";">
+			UPDATE user_register_log 
+			<set>
+				<if test="item.uid!=null">uid = #{item.uid,jdbcType=VARCHAR},</if>
+				<if test="item.registerMethod!=null">register_method = #{item.registerMethod,jdbcType=TINYINT},</if>
+				<if test="item.registerTime!=null">register_time = #{item.registerTime,jdbcType=INTEGER},</if>
+				<if test="item.registerIp!=null">register_ip = #{item.registerIp,jdbcType=VARCHAR},</if>
+				<if test="item.registerClient!=null">register_client = #{item.registerClient,jdbcType=VARCHAR}</if>
+			</set>
+			<where> 
+				id  = #{item.id}
+			</where>	
+		</foreach>
+	</update>	
+	
+	
+	<!-- 按ID查询记录 -->
+	<select id="queryById" parameterType="long" resultMap="BaseResultMap">
+		SELECT <include refid="BaseColumnList" />
+		FROM user_register_log 
+		WHERE id  = #{id}	
+	</select>
+
+		<!-- 按ID查询记录 -->
+	<select id="queryByUid" parameterType="String" resultMap="BaseResultMap">
+	SELECT <include refid="BaseColumnList" />
+	FROM user_register_log
+	WHERE uid  = #{uid}
+	</select>
+	
+	<!-- 按Id删除 -->
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM user_register_log WHERE id  = #{id}
+	</delete>
+
+	<!-- 按Id批量删除 -->
+	<delete id="batchDeleteById" parameterType="Long[]">
+		DELETE FROM user_register_log WHERE id in (
+		<foreach collection="array" item="item" separator=",">
+			#{item}
+		</foreach>
+		)
+	</delete>
+	
+	
+	<sql id="where">
+		<where>
+			1=1
+			<if test="id!=null">AND t.id = #{id,jdbcType=BIGINT}</if>
+			<if test="uid!=null and uid!=''">AND t.uid = #{uid,jdbcType=VARCHAR}</if>
+			<if test="registerMethod!=null">AND t.register_method = #{registerMethod,jdbcType=TINYINT}</if>
+			<if test="registerTime!=null">AND t.register_time = #{registerTime,jdbcType=INTEGER}</if>
+			<if test="registerIp!=null and registerIp!=''">AND t.register_ip = #{registerIp,jdbcType=VARCHAR}</if>
+			<if test="registerClient!=null and registerClient!=''">AND t.register_client = #{registerClient,jdbcType=VARCHAR}</if>
+		</where>
+	</sql>
+	
+	<sql id="queryFrom">
+		FROM user_register_log
+	</sql>
+	<!-- 查询Where语句 -->
+	<sql id="whereForLike">
+		<where>
+			1=1
+			<if test="whereCondition!=null">
+				<if test="whereCondition.id!=null">AND t.id = #{whereCondition.id,jdbcType=BIGINT}</if>
+				<if test="whereCondition.uid!=null and whereCondition.uid!=''">AND t.uid like #{whereCondition.uidByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.registerMethod!=null">AND t.register_method = #{whereCondition.registerMethod,jdbcType=TINYINT}</if>
+				<if test="whereCondition.registerTime!=null">AND t.register_time = #{whereCondition.registerTime,jdbcType=INTEGER}</if>
+				<if test="whereCondition.registerIp!=null and whereCondition.registerIp!=''">AND t.register_ip like #{whereCondition.registerIpByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.registerClient!=null and whereCondition.registerClient!=''">AND t.register_client like #{whereCondition.registerClientByLike,jdbcType=VARCHAR}</if>
+			</if>
+			<if test="keyWord!=null and keyWord!=''">
+				AND (
+						t.uid like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.register_ip like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.register_client like #{keyWordByLike,jdbcType=VARCHAR} 
+					)
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 按对象查询 -->
+	<select id="queryByEntity" parameterType="com.alankin.entity.UserRegisterLogEntity" resultMap="BaseResultMap">
+		SELECT <include refid="BaseColumnList" />
+		<include refid="queryFrom" /> t
+		<include refid="where" />
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="queryByPage" parameterType="com.alankin.center.common.vo.ListVo.ListReqVO"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="BaseColumnList" />
+		<include refid="queryFrom" /> t
+		<include refid="whereForLike" />
+		<choose>
+			<when test="orderField==null">
+				ORDER BY id DESC
+			</when>
+			<otherwise>
+				ORDER BY ${orderField}
+			</otherwise>
+		</choose>
+	</select>
+
+
+	<!-- 查询记录数 -->
+	<select id="queryCount" resultType="int"
+		parameterType="com.alankin.center.common.vo.ListVo.ListReqVO">
+		SELECT COUNT(1)  
+		<include refid="queryFrom" /> t
+		<include refid="whereForLike" />
+	</select>
+</mapper>
+

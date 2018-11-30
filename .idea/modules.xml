@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/center-common/center-common.iml" filepath="$PROJECT_DIR$/center-common/center-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/center-parent/center-parent.iml" filepath="$PROJECT_DIR$/center-parent/center-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/center-pre/center-pre.iml" filepath="$PROJECT_DIR$/center-pre/center-pre.iml" />
+      <module fileurl="file://$PROJECT_DIR$/center-pre/center-pre-api/center-pre-api.iml" filepath="$PROJECT_DIR$/center-pre/center-pre-api/center-pre-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/center-pre/center-pre-gateway/center-pre-gateway.iml" filepath="$PROJECT_DIR$/center-pre/center-pre-gateway/center-pre-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/center-user/center-user.iml" filepath="$PROJECT_DIR$/center-user/center-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/center-user/center-user-api/center-user-api.iml" filepath="$PROJECT_DIR$/center-user/center-user-api/center-user-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/center-user/center-user-dao/center-user-dao.iml" filepath="$PROJECT_DIR$/center-user/center-user-dao/center-user-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/center-user/center-user-entity/center-user-entity.iml" filepath="$PROJECT_DIR$/center-user/center-user-entity/center-user-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/center-user/center-user-service/center-user-service.iml" filepath="$PROJECT_DIR$/center-user/center-user-service/center-user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fund_code_generator/fund_code_generator.iml" filepath="$PROJECT_DIR$/fund_code_generator/fund_code_generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/yunyunServer.iml" filepath="$PROJECT_DIR$/.idea/yunyunServer.iml" />
+    </modules>
+  </component>
+</project>

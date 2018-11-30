@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.alankin.mapper.UserAuthMapper">
+
+	<!-- 结果Map -->
+	<resultMap id="BaseResultMap" type="com.alankin.entity.UserAuthEntity">
+		<result property="id" jdbcType="BIGINT" column="id"/>
+		<result property="uid" jdbcType="VARCHAR" column="uid"/>
+		<result property="identityType" jdbcType="TINYINT" column="identity_type"/>
+		<result property="identifier" jdbcType="VARCHAR" column="identifier"/>
+		<result property="certificate" jdbcType="VARCHAR" column="certificate"/>
+		<result property="createTime" jdbcType="INTEGER" column="create_time"/>
+		<result property="updateTime" jdbcType="INTEGER" column="update_time"/>
+	</resultMap>
+	
+	<!-- 查询列 -->
+	<sql id="BaseColumnList">
+		id,uid,identity_type,identifier,certificate,create_time,update_time
+	</sql>
+			
+	<!--创建记录 -->
+	<insert id="create" parameterType="com.alankin.entity.UserAuthEntity" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO user_auth
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uid!=null">uid,</if>
+			<if test="identityType!=null">identity_type,</if>
+			<if test="identifier!=null">identifier,</if>
+			<if test="certificate!=null">certificate,</if>
+			<if test="createTime!=null">create_time,</if>
+			<if test="updateTime!=null">update_time</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+			<if test="uid!=null">#{uid,jdbcType=VARCHAR},</if>
+			<if test="identityType!=null">#{identityType,jdbcType=TINYINT},</if>
+			<if test="identifier!=null">#{identifier,jdbcType=VARCHAR},</if>
+			<if test="certificate!=null">#{certificate,jdbcType=VARCHAR},</if>
+			<if test="createTime!=null">#{createTime,jdbcType=INTEGER},</if>
+			<if test="updateTime!=null">#{updateTime,jdbcType=INTEGER}</if>
+		</trim>
+	</insert>
+
+	<!--批量创建记录 -->
+	<insert id="batchSave" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id" >
+		<foreach collection="list" item="item" index="index" separator=";">
+			INSERT INTO user_auth
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+					<if test="item.uid!=null">uid,</if>
+					<if test="item.identityType!=null">identity_type,</if>
+					<if test="item.identifier!=null">identifier,</if>
+					<if test="item.certificate!=null">certificate,</if>
+					<if test="item.createTime!=null">create_time,</if>
+					<if test="item.updateTime!=null">update_time</if>
+			</trim>
+			<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+					<if test="item.uid!=null">#{item.uid,jdbcType=VARCHAR},</if>
+					<if test="item.identityType!=null">#{item.identityType,jdbcType=TINYINT},</if>
+					<if test="item.identifier!=null">#{item.identifier,jdbcType=VARCHAR},</if>
+					<if test="item.certificate!=null">#{item.certificate,jdbcType=VARCHAR},</if>
+					<if test="item.createTime!=null">#{item.createTime,jdbcType=INTEGER},</if>
+					<if test="item.updateTime!=null">#{item.updateTime,jdbcType=INTEGER}</if>
+			</trim>
+		</foreach>
+	</insert>
+	
+	<!-- 更新记录 -->
+	<update id="update" parameterType="com.alankin.entity.UserAuthEntity">
+		UPDATE user_auth 
+		<set>
+			<if test="uid!=null">uid = #{uid,jdbcType=VARCHAR},</if>
+			<if test="identityType!=null">identity_type = #{identityType,jdbcType=TINYINT},</if>
+			<if test="identifier!=null">identifier = #{identifier,jdbcType=VARCHAR},</if>
+			<if test="certificate!=null">certificate = #{certificate,jdbcType=VARCHAR},</if>
+			<if test="createTime!=null">create_time = #{createTime,jdbcType=INTEGER},</if>
+			<if test="updateTime!=null">update_time = #{updateTime,jdbcType=INTEGER}</if>
+		</set>
+		<where> 
+			id  = #{id}
+		</where>				
+	</update>
+	
+	<!--批量更新记录 -->
+	<update id="batchUpdate" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" separator=";">
+			UPDATE user_auth 
+			<set>
+				<if test="item.uid!=null">uid = #{item.uid,jdbcType=VARCHAR},</if>
+				<if test="item.identityType!=null">identity_type = #{item.identityType,jdbcType=TINYINT},</if>
+				<if test="item.identifier!=null">identifier = #{item.identifier,jdbcType=VARCHAR},</if>
+				<if test="item.certificate!=null">certificate = #{item.certificate,jdbcType=VARCHAR},</if>
+				<if test="item.createTime!=null">create_time = #{item.createTime,jdbcType=INTEGER},</if>
+				<if test="item.updateTime!=null">update_time = #{item.updateTime,jdbcType=INTEGER}</if>
+			</set>
+			<where> 
+				id  = #{item.id}
+			</where>	
+		</foreach>
+	</update>	
+	
+	
+	<!-- 按ID查询记录 -->
+	<select id="queryById" parameterType="long" resultMap="BaseResultMap">
+		SELECT <include refid="BaseColumnList" />
+		FROM user_auth 
+		WHERE id  = #{id}	
+	</select>
+
+		<!-- 按ID查询记录 -->
+	<select id="queryByUid" parameterType="String" resultMap="BaseResultMap">
+	SELECT <include refid="BaseColumnList" />
+	FROM user_auth
+	WHERE uid  = #{uid}
+	</select>
+	
+	<!-- 按Id删除 -->
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM user_auth WHERE id  = #{id}
+	</delete>
+
+	<!-- 按Id批量删除 -->
+	<delete id="batchDeleteById" parameterType="Long[]">
+		DELETE FROM user_auth WHERE id in (
+		<foreach collection="array" item="item" separator=",">
+			#{item}
+		</foreach>
+		)
+	</delete>
+	
+	
+	<sql id="where">
+		<where>
+			1=1
+			<if test="id!=null">AND t.id = #{id,jdbcType=BIGINT}</if>
+			<if test="uid!=null and uid!=''">AND t.uid = #{uid,jdbcType=VARCHAR}</if>
+			<if test="identityType!=null">AND t.identity_type = #{identityType,jdbcType=TINYINT}</if>
+			<if test="identifier!=null and identifier!=''">AND t.identifier = #{identifier,jdbcType=VARCHAR}</if>
+			<if test="certificate!=null and certificate!=''">AND t.certificate = #{certificate,jdbcType=VARCHAR}</if>
+			<if test="createTime!=null">AND t.create_time = #{createTime,jdbcType=INTEGER}</if>
+			<if test="updateTime!=null">AND t.update_time = #{updateTime,jdbcType=INTEGER}</if>
+		</where>
+	</sql>
+	
+	<sql id="queryFrom">
+		FROM user_auth
+	</sql>
+	<!-- 查询Where语句 -->
+	<sql id="whereForLike">
+		<where>
+			1=1
+			<if test="whereCondition!=null">
+				<if test="whereCondition.id!=null">AND t.id = #{whereCondition.id,jdbcType=BIGINT}</if>
+				<if test="whereCondition.uid!=null and whereCondition.uid!=''">AND t.uid like #{whereCondition.uidByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.identityType!=null">AND t.identity_type = #{whereCondition.identityType,jdbcType=TINYINT}</if>
+				<if test="whereCondition.identifier!=null and whereCondition.identifier!=''">AND t.identifier like #{whereCondition.identifierByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.certificate!=null and whereCondition.certificate!=''">AND t.certificate like #{whereCondition.certificateByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.createTime!=null">AND t.create_time = #{whereCondition.createTime,jdbcType=INTEGER}</if>
+				<if test="whereCondition.updateTime!=null">AND t.update_time = #{whereCondition.updateTime,jdbcType=INTEGER}</if>
+			</if>
+			<if test="keyWord!=null and keyWord!=''">
+				AND (
+						t.uid like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.identifier like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.certificate like #{keyWordByLike,jdbcType=VARCHAR} 
+					)
+			</if>
+			<if test="startTime!=null and startTime!=''">AND t.create_time &gt;= #{startTime}</if>
+			<if test="endTime!=null and endTime!=''">AND t.create_time &lt;= #{endTime}</if>
+		</where>
+	</sql>
+	
+	<!-- 按对象查询 -->
+	<select id="queryByEntity" parameterType="com.alankin.entity.UserAuthEntity" resultMap="BaseResultMap">
+		SELECT <include refid="BaseColumnList" />
+		<include refid="queryFrom" /> t
+		<include refid="where" />
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="queryByPage" parameterType="com.alankin.center.common.vo.ListVo.ListReqVO"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="BaseColumnList" />
+		<include refid="queryFrom" /> t
+		<include refid="whereForLike" />
+		<choose>
+			<when test="orderField==null">
+				ORDER BY id DESC
+			</when>
+			<otherwise>
+				ORDER BY ${orderField}
+			</otherwise>
+		</choose>
+	</select>
+
+
+	<!-- 查询记录数 -->
+	<select id="queryCount" resultType="int"
+		parameterType="com.alankin.center.common.vo.ListVo.ListReqVO">
+		SELECT COUNT(1)  
+		<include refid="queryFrom" /> t
+		<include refid="whereForLike" />
+	</select>
+</mapper>
+

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="center-pre-gateway:war">
+    <output-path>$PROJECT_DIR$/center-pre/center-pre-gateway/target</output-path>
+    <root id="archive" name="center-pre-interface.war">
+      <element id="artifact" artifact-name="center-pre-gateway:war exploded" />
+    </root>
+  </artifact>
+</component>

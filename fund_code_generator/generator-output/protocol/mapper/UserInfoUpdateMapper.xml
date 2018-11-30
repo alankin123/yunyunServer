@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.alankin.mapper.UserInfoUpdateMapper">
+
+	<!-- 结果Map -->
+	<resultMap id="BaseResultMap" type="com.alankin.entity.UserInfoUpdateEntity">
+		<result property="id" jdbcType="BIGINT" column="id"/>
+		<result property="uid" jdbcType="VARCHAR" column="uid"/>
+		<result property="attributeName" jdbcType="VARCHAR" column="attribute_name"/>
+		<result property="attributeOldVal" jdbcType="VARCHAR" column="attribute_old_val"/>
+		<result property="attributeNewVal" jdbcType="VARCHAR" column="attribute_new_val"/>
+		<result property="updateTime" jdbcType="INTEGER" column="update_time"/>
+	</resultMap>
+	
+	<!-- 查询列 -->
+	<sql id="BaseColumnList">
+		id,uid,attribute_name,attribute_old_val,attribute_new_val,update_time
+	</sql>
+			
+	<!--创建记录 -->
+	<insert id="create" parameterType="com.alankin.entity.UserInfoUpdateEntity" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO user_info_update
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uid!=null">uid,</if>
+			<if test="attributeName!=null">attribute_name,</if>
+			<if test="attributeOldVal!=null">attribute_old_val,</if>
+			<if test="attributeNewVal!=null">attribute_new_val,</if>
+			<if test="updateTime!=null">update_time</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+			<if test="uid!=null">#{uid,jdbcType=VARCHAR},</if>
+			<if test="attributeName!=null">#{attributeName,jdbcType=VARCHAR},</if>
+			<if test="attributeOldVal!=null">#{attributeOldVal,jdbcType=VARCHAR},</if>
+			<if test="attributeNewVal!=null">#{attributeNewVal,jdbcType=VARCHAR},</if>
+			<if test="updateTime!=null">#{updateTime,jdbcType=INTEGER}</if>
+		</trim>
+	</insert>
+
+	<!--批量创建记录 -->
+	<insert id="batchSave" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id" >
+		<foreach collection="list" item="item" index="index" separator=";">
+			INSERT INTO user_info_update
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+					<if test="item.uid!=null">uid,</if>
+					<if test="item.attributeName!=null">attribute_name,</if>
+					<if test="item.attributeOldVal!=null">attribute_old_val,</if>
+					<if test="item.attributeNewVal!=null">attribute_new_val,</if>
+					<if test="item.updateTime!=null">update_time</if>
+			</trim>
+			<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+					<if test="item.uid!=null">#{item.uid,jdbcType=VARCHAR},</if>
+					<if test="item.attributeName!=null">#{item.attributeName,jdbcType=VARCHAR},</if>
+					<if test="item.attributeOldVal!=null">#{item.attributeOldVal,jdbcType=VARCHAR},</if>
+					<if test="item.attributeNewVal!=null">#{item.attributeNewVal,jdbcType=VARCHAR},</if>
+					<if test="item.updateTime!=null">#{item.updateTime,jdbcType=INTEGER}</if>
+			</trim>
+		</foreach>
+	</insert>
+	
+	<!-- 更新记录 -->
+	<update id="update" parameterType="com.alankin.entity.UserInfoUpdateEntity">
+		UPDATE user_info_update 
+		<set>
+			<if test="uid!=null">uid = #{uid,jdbcType=VARCHAR},</if>
+			<if test="attributeName!=null">attribute_name = #{attributeName,jdbcType=VARCHAR},</if>
+			<if test="attributeOldVal!=null">attribute_old_val = #{attributeOldVal,jdbcType=VARCHAR},</if>
+			<if test="attributeNewVal!=null">attribute_new_val = #{attributeNewVal,jdbcType=VARCHAR},</if>
+			<if test="updateTime!=null">update_time = #{updateTime,jdbcType=INTEGER}</if>
+		</set>
+		<where> 
+			id  = #{id}
+		</where>				
+	</update>
+	
+	<!--批量更新记录 -->
+	<update id="batchUpdate" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" separator=";">
+			UPDATE user_info_update 
+			<set>
+				<if test="item.uid!=null">uid = #{item.uid,jdbcType=VARCHAR},</if>
+				<if test="item.attributeName!=null">attribute_name = #{item.attributeName,jdbcType=VARCHAR},</if>
+				<if test="item.attributeOldVal!=null">attribute_old_val = #{item.attributeOldVal,jdbcType=VARCHAR},</if>
+				<if test="item.attributeNewVal!=null">attribute_new_val = #{item.attributeNewVal,jdbcType=VARCHAR},</if>
+				<if test="item.updateTime!=null">update_time = #{item.updateTime,jdbcType=INTEGER}</if>
+			</set>
+			<where> 
+				id  = #{item.id}
+			</where>	
+		</foreach>
+	</update>	
+	
+	
+	<!-- 按ID查询记录 -->
+	<select id="queryById" parameterType="long" resultMap="BaseResultMap">
+		SELECT <include refid="BaseColumnList" />
+		FROM user_info_update 
+		WHERE id  = #{id}	
+	</select>
+
+		<!-- 按ID查询记录 -->
+	<select id="queryByUid" parameterType="String" resultMap="BaseResultMap">
+	SELECT <include refid="BaseColumnList" />
+	FROM user_info_update
+	WHERE uid  = #{uid}
+	</select>
+	
+	<!-- 按Id删除 -->
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM user_info_update WHERE id  = #{id}
+	</delete>
+
+	<!-- 按Id批量删除 -->
+	<delete id="batchDeleteById" parameterType="Long[]">
+		DELETE FROM user_info_update WHERE id in (
+		<foreach collection="array" item="item" separator=",">
+			#{item}
+		</foreach>
+		)
+	</delete>
+	
+	
+	<sql id="where">
+		<where>
+			1=1
+			<if test="id!=null">AND t.id = #{id,jdbcType=BIGINT}</if>
+			<if test="uid!=null and uid!=''">AND t.uid = #{uid,jdbcType=VARCHAR}</if>
+			<if test="attributeName!=null and attributeName!=''">AND t.attribute_name = #{attributeName,jdbcType=VARCHAR}</if>
+			<if test="attributeOldVal!=null and attributeOldVal!=''">AND t.attribute_old_val = #{attributeOldVal,jdbcType=VARCHAR}</if>
+			<if test="attributeNewVal!=null and attributeNewVal!=''">AND t.attribute_new_val = #{attributeNewVal,jdbcType=VARCHAR}</if>
+			<if test="updateTime!=null">AND t.update_time = #{updateTime,jdbcType=INTEGER}</if>
+		</where>
+	</sql>
+	
+	<sql id="queryFrom">
+		FROM user_info_update
+	</sql>
+	<!-- 查询Where语句 -->
+	<sql id="whereForLike">
+		<where>
+			1=1
+			<if test="whereCondition!=null">
+				<if test="whereCondition.id!=null">AND t.id = #{whereCondition.id,jdbcType=BIGINT}</if>
+				<if test="whereCondition.uid!=null and whereCondition.uid!=''">AND t.uid like #{whereCondition.uidByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.attributeName!=null and whereCondition.attributeName!=''">AND t.attribute_name like #{whereCondition.attributeNameByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.attributeOldVal!=null and whereCondition.attributeOldVal!=''">AND t.attribute_old_val like #{whereCondition.attributeOldValByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.attributeNewVal!=null and whereCondition.attributeNewVal!=''">AND t.attribute_new_val like #{whereCondition.attributeNewValByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.updateTime!=null">AND t.update_time = #{whereCondition.updateTime,jdbcType=INTEGER}</if>
+			</if>
+			<if test="keyWord!=null and keyWord!=''">
+				AND (
+						t.uid like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.attribute_name like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.attribute_old_val like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.attribute_new_val like #{keyWordByLike,jdbcType=VARCHAR} 
+					)
+			</if>
+		</where>
+	</sql>
+	
+	<!-- 按对象查询 -->
+	<select id="queryByEntity" parameterType="com.alankin.entity.UserInfoUpdateEntity" resultMap="BaseResultMap">
+		SELECT <include refid="BaseColumnList" />
+		<include refid="queryFrom" /> t
+		<include refid="where" />
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="queryByPage" parameterType="com.alankin.center.common.vo.ListVo.ListReqVO"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="BaseColumnList" />
+		<include refid="queryFrom" /> t
+		<include refid="whereForLike" />
+		<choose>
+			<when test="orderField==null">
+				ORDER BY id DESC
+			</when>
+			<otherwise>
+				ORDER BY ${orderField}
+			</otherwise>
+		</choose>
+	</select>
+
+
+	<!-- 查询记录数 -->
+	<select id="queryCount" resultType="int"
+		parameterType="com.alankin.center.common.vo.ListVo.ListReqVO">
+		SELECT COUNT(1)  
+		<include refid="queryFrom" /> t
+		<include refid="whereForLike" />
+	</select>
+</mapper>
+

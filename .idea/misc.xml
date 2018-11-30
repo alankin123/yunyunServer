@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/center-pre/center-pre-gateway" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/center-common/pom.xml" />
+        <option value="$PROJECT_DIR$/center-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/center-user/pom.xml" />
+        <option value="$PROJECT_DIR$/fund_code_generator/pom.xml" />
+        <option value="$PROJECT_DIR$/centerpre/pom.xml" />
+        <option value="$PROJECT_DIR$/center-pre/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

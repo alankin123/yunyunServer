@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.alankin.mapper.UserExtraMapper">
+
+	<!-- 结果Map -->
+	<resultMap id="BaseResultMap" type="com.alankin.entity.UserExtraEntity">
+		<result property="uid" jdbcType="VARCHAR" column="uid"/>
+		<result property="vendor" jdbcType="VARCHAR" column="vendor"/>
+		<result property="clientName" jdbcType="VARCHAR" column="client_name"/>
+		<result property="clientVersion" jdbcType="VARCHAR" column="client_version"/>
+		<result property="osName" jdbcType="VARCHAR" column="os_name"/>
+		<result property="osVersion" jdbcType="VARCHAR" column="os_version"/>
+		<result property="deviceName" jdbcType="VARCHAR" column="device_name"/>
+		<result property="deviceId" jdbcType="VARCHAR" column="device_id"/>
+		<result property="idfa" jdbcType="VARCHAR" column="idfa"/>
+		<result property="idfv" jdbcType="VARCHAR" column="idfv"/>
+		<result property="market" jdbcType="VARCHAR" column="market"/>
+		<result property="createTime" jdbcType="INTEGER" column="create_time"/>
+		<result property="updateTime" jdbcType="INTEGER" column="update_time"/>
+		<result property="extend1" jdbcType="VARCHAR" column="extend1"/>
+		<result property="extend2" jdbcType="VARCHAR" column="extend2"/>
+		<result property="extend3" jdbcType="VARCHAR" column="extend3"/>
+	</resultMap>
+	
+	<!-- 查询列 -->
+	<sql id="BaseColumnList">
+		uid,vendor,client_name,client_version,os_name,os_version,device_name,device_id,idfa,idfv,market,create_time,update_time,extend1,extend2,extend3
+	</sql>
+			
+	<!--创建记录 -->
+	<insert id="create" parameterType="com.alankin.entity.UserExtraEntity" useGeneratedKeys="true" keyProperty="uid">
+		INSERT INTO user_extra
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="uid!=null">uid,</if>
+			<if test="vendor!=null">vendor,</if>
+			<if test="clientName!=null">client_name,</if>
+			<if test="clientVersion!=null">client_version,</if>
+			<if test="osName!=null">os_name,</if>
+			<if test="osVersion!=null">os_version,</if>
+			<if test="deviceName!=null">device_name,</if>
+			<if test="deviceId!=null">device_id,</if>
+			<if test="idfa!=null">idfa,</if>
+			<if test="idfv!=null">idfv,</if>
+			<if test="market!=null">market,</if>
+			<if test="createTime!=null">create_time,</if>
+			<if test="updateTime!=null">update_time,</if>
+			<if test="extend1!=null">extend1,</if>
+			<if test="extend2!=null">extend2,</if>
+			<if test="extend3!=null">extend3</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+			<if test="uid!=null">#{uid,jdbcType=VARCHAR},</if>
+			<if test="vendor!=null">#{vendor,jdbcType=VARCHAR},</if>
+			<if test="clientName!=null">#{clientName,jdbcType=VARCHAR},</if>
+			<if test="clientVersion!=null">#{clientVersion,jdbcType=VARCHAR},</if>
+			<if test="osName!=null">#{osName,jdbcType=VARCHAR},</if>
+			<if test="osVersion!=null">#{osVersion,jdbcType=VARCHAR},</if>
+			<if test="deviceName!=null">#{deviceName,jdbcType=VARCHAR},</if>
+			<if test="deviceId!=null">#{deviceId,jdbcType=VARCHAR},</if>
+			<if test="idfa!=null">#{idfa,jdbcType=VARCHAR},</if>
+			<if test="idfv!=null">#{idfv,jdbcType=VARCHAR},</if>
+			<if test="market!=null">#{market,jdbcType=VARCHAR},</if>
+			<if test="createTime!=null">#{createTime,jdbcType=INTEGER},</if>
+			<if test="updateTime!=null">#{updateTime,jdbcType=INTEGER},</if>
+			<if test="extend1!=null">#{extend1,jdbcType=VARCHAR},</if>
+			<if test="extend2!=null">#{extend2,jdbcType=VARCHAR},</if>
+			<if test="extend3!=null">#{extend3,jdbcType=VARCHAR}</if>
+		</trim>
+	</insert>
+
+	<!--批量创建记录 -->
+	<insert id="batchSave" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="uid" >
+		<foreach collection="list" item="item" index="index" separator=";">
+			INSERT INTO user_extra
+			<trim prefix="(" suffix=")" suffixOverrides=",">
+					<if test="item.uid!=null">uid,</if>
+					<if test="item.vendor!=null">vendor,</if>
+					<if test="item.clientName!=null">client_name,</if>
+					<if test="item.clientVersion!=null">client_version,</if>
+					<if test="item.osName!=null">os_name,</if>
+					<if test="item.osVersion!=null">os_version,</if>
+					<if test="item.deviceName!=null">device_name,</if>
+					<if test="item.deviceId!=null">device_id,</if>
+					<if test="item.idfa!=null">idfa,</if>
+					<if test="item.idfv!=null">idfv,</if>
+					<if test="item.market!=null">market,</if>
+					<if test="item.createTime!=null">create_time,</if>
+					<if test="item.updateTime!=null">update_time,</if>
+					<if test="item.extend1!=null">extend1,</if>
+					<if test="item.extend2!=null">extend2,</if>
+					<if test="item.extend3!=null">extend3</if>
+			</trim>
+			<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+					<if test="item.uid!=null">#{item.uid,jdbcType=VARCHAR},</if>
+					<if test="item.vendor!=null">#{item.vendor,jdbcType=VARCHAR},</if>
+					<if test="item.clientName!=null">#{item.clientName,jdbcType=VARCHAR},</if>
+					<if test="item.clientVersion!=null">#{item.clientVersion,jdbcType=VARCHAR},</if>
+					<if test="item.osName!=null">#{item.osName,jdbcType=VARCHAR},</if>
+					<if test="item.osVersion!=null">#{item.osVersion,jdbcType=VARCHAR},</if>
+					<if test="item.deviceName!=null">#{item.deviceName,jdbcType=VARCHAR},</if>
+					<if test="item.deviceId!=null">#{item.deviceId,jdbcType=VARCHAR},</if>
+					<if test="item.idfa!=null">#{item.idfa,jdbcType=VARCHAR},</if>
+					<if test="item.idfv!=null">#{item.idfv,jdbcType=VARCHAR},</if>
+					<if test="item.market!=null">#{item.market,jdbcType=VARCHAR},</if>
+					<if test="item.createTime!=null">#{item.createTime,jdbcType=INTEGER},</if>
+					<if test="item.updateTime!=null">#{item.updateTime,jdbcType=INTEGER},</if>
+					<if test="item.extend1!=null">#{item.extend1,jdbcType=VARCHAR},</if>
+					<if test="item.extend2!=null">#{item.extend2,jdbcType=VARCHAR},</if>
+					<if test="item.extend3!=null">#{item.extend3,jdbcType=VARCHAR}</if>
+			</trim>
+		</foreach>
+	</insert>
+	
+	<!-- 更新记录 -->
+	<update id="update" parameterType="com.alankin.entity.UserExtraEntity">
+		UPDATE user_extra 
+		<set>
+			<if test="vendor!=null">vendor = #{vendor,jdbcType=VARCHAR},</if>
+			<if test="clientName!=null">client_name = #{clientName,jdbcType=VARCHAR},</if>
+			<if test="clientVersion!=null">client_version = #{clientVersion,jdbcType=VARCHAR},</if>
+			<if test="osName!=null">os_name = #{osName,jdbcType=VARCHAR},</if>
+			<if test="osVersion!=null">os_version = #{osVersion,jdbcType=VARCHAR},</if>
+			<if test="deviceName!=null">device_name = #{deviceName,jdbcType=VARCHAR},</if>
+			<if test="deviceId!=null">device_id = #{deviceId,jdbcType=VARCHAR},</if>
+			<if test="idfa!=null">idfa = #{idfa,jdbcType=VARCHAR},</if>
+			<if test="idfv!=null">idfv = #{idfv,jdbcType=VARCHAR},</if>
+			<if test="market!=null">market = #{market,jdbcType=VARCHAR},</if>
+			<if test="createTime!=null">create_time = #{createTime,jdbcType=INTEGER},</if>
+			<if test="updateTime!=null">update_time = #{updateTime,jdbcType=INTEGER},</if>
+			<if test="extend1!=null">extend1 = #{extend1,jdbcType=VARCHAR},</if>
+			<if test="extend2!=null">extend2 = #{extend2,jdbcType=VARCHAR},</if>
+			<if test="extend3!=null">extend3 = #{extend3,jdbcType=VARCHAR}</if>
+		</set>
+		<where> 
+			uid  = #{uid}
+		</where>				
+	</update>
+	
+	<!--批量更新记录 -->
+	<update id="batchUpdate" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" separator=";">
+			UPDATE user_extra 
+			<set>
+				<if test="item.vendor!=null">vendor = #{item.vendor,jdbcType=VARCHAR},</if>
+				<if test="item.clientName!=null">client_name = #{item.clientName,jdbcType=VARCHAR},</if>
+				<if test="item.clientVersion!=null">client_version = #{item.clientVersion,jdbcType=VARCHAR},</if>
+				<if test="item.osName!=null">os_name = #{item.osName,jdbcType=VARCHAR},</if>
+				<if test="item.osVersion!=null">os_version = #{item.osVersion,jdbcType=VARCHAR},</if>
+				<if test="item.deviceName!=null">device_name = #{item.deviceName,jdbcType=VARCHAR},</if>
+				<if test="item.deviceId!=null">device_id = #{item.deviceId,jdbcType=VARCHAR},</if>
+				<if test="item.idfa!=null">idfa = #{item.idfa,jdbcType=VARCHAR},</if>
+				<if test="item.idfv!=null">idfv = #{item.idfv,jdbcType=VARCHAR},</if>
+				<if test="item.market!=null">market = #{item.market,jdbcType=VARCHAR},</if>
+				<if test="item.createTime!=null">create_time = #{item.createTime,jdbcType=INTEGER},</if>
+				<if test="item.updateTime!=null">update_time = #{item.updateTime,jdbcType=INTEGER},</if>
+				<if test="item.extend1!=null">extend1 = #{item.extend1,jdbcType=VARCHAR},</if>
+				<if test="item.extend2!=null">extend2 = #{item.extend2,jdbcType=VARCHAR},</if>
+				<if test="item.extend3!=null">extend3 = #{item.extend3,jdbcType=VARCHAR}</if>
+			</set>
+			<where> 
+				uid  = #{item.uid}
+			</where>	
+		</foreach>
+	</update>	
+	
+	
+	<!-- 按ID查询记录 -->
+	<select id="queryById" parameterType="long" resultMap="BaseResultMap">
+		SELECT <include refid="BaseColumnList" />
+		FROM user_extra 
+		WHERE uid  = #{uid}	
+	</select>
+
+		<!-- 按ID查询记录 -->
+	<select id="queryByUid" parameterType="String" resultMap="BaseResultMap">
+	SELECT <include refid="BaseColumnList" />
+	FROM user_extra
+	WHERE uid  = #{uid}
+	</select>
+	
+	<!-- 按Id删除 -->
+	<delete id="deleteById" parameterType="long">
+		DELETE FROM user_extra WHERE uid  = #{uid}
+	</delete>
+
+	<!-- 按Id批量删除 -->
+	<delete id="batchDeleteById" parameterType="Long[]">
+		DELETE FROM user_extra WHERE uid in (
+		<foreach collection="array" item="item" separator=",">
+			#{item}
+		</foreach>
+		)
+	</delete>
+	
+	
+	<sql id="where">
+		<where>
+			1=1
+			<if test="uid!=null and uid!=''">AND t.uid = #{uid,jdbcType=VARCHAR}</if>
+			<if test="vendor!=null and vendor!=''">AND t.vendor = #{vendor,jdbcType=VARCHAR}</if>
+			<if test="clientName!=null and clientName!=''">AND t.client_name = #{clientName,jdbcType=VARCHAR}</if>
+			<if test="clientVersion!=null and clientVersion!=''">AND t.client_version = #{clientVersion,jdbcType=VARCHAR}</if>
+			<if test="osName!=null and osName!=''">AND t.os_name = #{osName,jdbcType=VARCHAR}</if>
+			<if test="osVersion!=null and osVersion!=''">AND t.os_version = #{osVersion,jdbcType=VARCHAR}</if>
+			<if test="deviceName!=null and deviceName!=''">AND t.device_name = #{deviceName,jdbcType=VARCHAR}</if>
+			<if test="deviceId!=null and deviceId!=''">AND t.device_id = #{deviceId,jdbcType=VARCHAR}</if>
+			<if test="idfa!=null and idfa!=''">AND t.idfa = #{idfa,jdbcType=VARCHAR}</if>
+			<if test="idfv!=null and idfv!=''">AND t.idfv = #{idfv,jdbcType=VARCHAR}</if>
+			<if test="market!=null and market!=''">AND t.market = #{market,jdbcType=VARCHAR}</if>
+			<if test="createTime!=null">AND t.create_time = #{createTime,jdbcType=INTEGER}</if>
+			<if test="updateTime!=null">AND t.update_time = #{updateTime,jdbcType=INTEGER}</if>
+			<if test="extend1!=null and extend1!=''">AND t.extend1 = #{extend1,jdbcType=VARCHAR}</if>
+			<if test="extend2!=null and extend2!=''">AND t.extend2 = #{extend2,jdbcType=VARCHAR}</if>
+			<if test="extend3!=null and extend3!=''">AND t.extend3 = #{extend3,jdbcType=VARCHAR}</if>
+		</where>
+	</sql>
+	
+	<sql id="queryFrom">
+		FROM user_extra
+	</sql>
+	<!-- 查询Where语句 -->
+	<sql id="whereForLike">
+		<where>
+			1=1
+			<if test="whereCondition!=null">
+				<if test="whereCondition.uid!=null and whereCondition.uid!=''">AND t.uid like #{whereCondition.uidByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.vendor!=null and whereCondition.vendor!=''">AND t.vendor like #{whereCondition.vendorByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.clientName!=null and whereCondition.clientName!=''">AND t.client_name like #{whereCondition.clientNameByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.clientVersion!=null and whereCondition.clientVersion!=''">AND t.client_version like #{whereCondition.clientVersionByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.osName!=null and whereCondition.osName!=''">AND t.os_name like #{whereCondition.osNameByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.osVersion!=null and whereCondition.osVersion!=''">AND t.os_version like #{whereCondition.osVersionByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.deviceName!=null and whereCondition.deviceName!=''">AND t.device_name like #{whereCondition.deviceNameByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.deviceId!=null and whereCondition.deviceId!=''">AND t.device_id like #{whereCondition.deviceIdByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.idfa!=null and whereCondition.idfa!=''">AND t.idfa like #{whereCondition.idfaByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.idfv!=null and whereCondition.idfv!=''">AND t.idfv like #{whereCondition.idfvByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.market!=null and whereCondition.market!=''">AND t.market like #{whereCondition.marketByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.createTime!=null">AND t.create_time = #{whereCondition.createTime,jdbcType=INTEGER}</if>
+				<if test="whereCondition.updateTime!=null">AND t.update_time = #{whereCondition.updateTime,jdbcType=INTEGER}</if>
+				<if test="whereCondition.extend1!=null and whereCondition.extend1!=''">AND t.extend1 like #{whereCondition.extend1ByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.extend2!=null and whereCondition.extend2!=''">AND t.extend2 like #{whereCondition.extend2ByLike,jdbcType=VARCHAR}</if>
+				<if test="whereCondition.extend3!=null and whereCondition.extend3!=''">AND t.extend3 like #{whereCondition.extend3ByLike,jdbcType=VARCHAR}</if>
+			</if>
+			<if test="keyWord!=null and keyWord!=''">
+				AND (
+						t.uid like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.vendor like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.client_name like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.client_version like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.os_name like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.os_version like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.device_name like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.device_id like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.idfa like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.idfv like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.market like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.extend1 like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.extend2 like #{keyWordByLike,jdbcType=VARCHAR}  OR 
+						t.extend3 like #{keyWordByLike,jdbcType=VARCHAR} 
+					)
+			</if>
+			<if test="startTime!=null and startTime!=''">AND t.create_time &gt;= #{startTime}</if>
+			<if test="endTime!=null and endTime!=''">AND t.create_time &lt;= #{endTime}</if>
+		</where>
+	</sql>
+	
+	<!-- 按对象查询 -->
+	<select id="queryByEntity" parameterType="com.alankin.entity.UserExtraEntity" resultMap="BaseResultMap">
+		SELECT <include refid="BaseColumnList" />
+		<include refid="queryFrom" /> t
+		<include refid="where" />
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="queryByPage" parameterType="com.alankin.center.common.vo.ListVo.ListReqVO"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="BaseColumnList" />
+		<include refid="queryFrom" /> t
+		<include refid="whereForLike" />
+		<choose>
+			<when test="orderField==null">
+				ORDER BY uid DESC
+			</when>
+			<otherwise>
+				ORDER BY ${orderField}
+			</otherwise>
+		</choose>
+	</select>
+
+
+	<!-- 查询记录数 -->
+	<select id="queryCount" resultType="int"
+		parameterType="com.alankin.center.common.vo.ListVo.ListReqVO">
+		SELECT COUNT(1)  
+		<include refid="queryFrom" /> t
+		<include refid="whereForLike" />
+	</select>
+</mapper>
+
