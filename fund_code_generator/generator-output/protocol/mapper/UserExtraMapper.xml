@@ -5,6 +5,7 @@
 
 	<!-- 结果Map -->
 	<resultMap id="BaseResultMap" type="com.alankin.entity.UserExtraEntity">
+		<result property="id" jdbcType="BIGINT" column="id"/>
 		<result property="uid" jdbcType="VARCHAR" column="uid"/>
 		<result property="vendor" jdbcType="VARCHAR" column="vendor"/>
 		<result property="clientName" jdbcType="VARCHAR" column="client_name"/>
@@ -25,13 +26,14 @@
 	
 	<!-- 查询列 -->
 	<sql id="BaseColumnList">
-		uid,vendor,client_name,client_version,os_name,os_version,device_name,device_id,idfa,idfv,market,create_time,update_time,extend1,extend2,extend3
+		id,uid,vendor,client_name,client_version,os_name,os_version,device_name,device_id,idfa,idfv,market,create_time,update_time,extend1,extend2,extend3
 	</sql>
 			
 	<!--创建记录 -->
-	<insert id="create" parameterType="com.alankin.entity.UserExtraEntity" useGeneratedKeys="true" keyProperty="uid">
+	<insert id="create" parameterType="com.alankin.entity.UserExtraEntity" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO user_extra
 		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="id!=null">id,</if>
 			<if test="uid!=null">uid,</if>
 			<if test="vendor!=null">vendor,</if>
 			<if test="clientName!=null">client_name,</if>
@@ -50,6 +52,7 @@
 			<if test="extend3!=null">extend3</if>
 		</trim>
 		<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+			<if test="id!=null">#{id,jdbcType=BIGINT},</if>
 			<if test="uid!=null">#{uid,jdbcType=VARCHAR},</if>
 			<if test="vendor!=null">#{vendor,jdbcType=VARCHAR},</if>
 			<if test="clientName!=null">#{clientName,jdbcType=VARCHAR},</if>
@@ -70,10 +73,11 @@
 	</insert>
 
 	<!--批量创建记录 -->
-	<insert id="batchSave" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="uid" >
+	<insert id="batchSave" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id" >
 		<foreach collection="list" item="item" index="index" separator=";">
 			INSERT INTO user_extra
 			<trim prefix="(" suffix=")" suffixOverrides=",">
+					<if test="item.id!=null">id,</if>
 					<if test="item.uid!=null">uid,</if>
 					<if test="item.vendor!=null">vendor,</if>
 					<if test="item.clientName!=null">client_name,</if>
@@ -92,6 +96,7 @@
 					<if test="item.extend3!=null">extend3</if>
 			</trim>
 			<trim prefix="VALUES (" suffix=")" suffixOverrides="," >
+					<if test="item.id!=null">#{item.id,jdbcType=BIGINT},</if>
 					<if test="item.uid!=null">#{item.uid,jdbcType=VARCHAR},</if>
 					<if test="item.vendor!=null">#{item.vendor,jdbcType=VARCHAR},</if>
 					<if test="item.clientName!=null">#{item.clientName,jdbcType=VARCHAR},</if>
@@ -116,6 +121,7 @@
 	<update id="update" parameterType="com.alankin.entity.UserExtraEntity">
 		UPDATE user_extra 
 		<set>
+			<if test="uid!=null">uid = #{uid,jdbcType=VARCHAR},</if>
 			<if test="vendor!=null">vendor = #{vendor,jdbcType=VARCHAR},</if>
 			<if test="clientName!=null">client_name = #{clientName,jdbcType=VARCHAR},</if>
 			<if test="clientVersion!=null">client_version = #{clientVersion,jdbcType=VARCHAR},</if>
@@ -133,7 +139,7 @@
 			<if test="extend3!=null">extend3 = #{extend3,jdbcType=VARCHAR}</if>
 		</set>
 		<where> 
-			uid  = #{uid}
+			id  = #{id}
 		</where>				
 	</update>
 	
@@ -142,6 +148,7 @@
 		<foreach collection="list" item="item" index="index" separator=";">
 			UPDATE user_extra 
 			<set>
+				<if test="item.uid!=null">uid = #{item.uid,jdbcType=VARCHAR},</if>
 				<if test="item.vendor!=null">vendor = #{item.vendor,jdbcType=VARCHAR},</if>
 				<if test="item.clientName!=null">client_name = #{item.clientName,jdbcType=VARCHAR},</if>
 				<if test="item.clientVersion!=null">client_version = #{item.clientVersion,jdbcType=VARCHAR},</if>
@@ -159,7 +166,7 @@
 				<if test="item.extend3!=null">extend3 = #{item.extend3,jdbcType=VARCHAR}</if>
 			</set>
 			<where> 
-				uid  = #{item.uid}
+				id  = #{item.id}
 			</where>	
 		</foreach>
 	</update>	
@@ -169,7 +176,7 @@
 	<select id="queryById" parameterType="long" resultMap="BaseResultMap">
 		SELECT <include refid="BaseColumnList" />
 		FROM user_extra 
-		WHERE uid  = #{uid}	
+		WHERE id  = #{id}	
 	</select>
 
 		<!-- 按ID查询记录 -->
@@ -181,12 +188,12 @@
 	
 	<!-- 按Id删除 -->
 	<delete id="deleteById" parameterType="long">
-		DELETE FROM user_extra WHERE uid  = #{uid}
+		DELETE FROM user_extra WHERE id  = #{id}
 	</delete>
 
 	<!-- 按Id批量删除 -->
 	<delete id="batchDeleteById" parameterType="Long[]">
-		DELETE FROM user_extra WHERE uid in (
+		DELETE FROM user_extra WHERE id in (
 		<foreach collection="array" item="item" separator=",">
 			#{item}
 		</foreach>
@@ -197,6 +204,7 @@
 	<sql id="where">
 		<where>
 			1=1
+			<if test="id!=null">AND t.id = #{id,jdbcType=BIGINT}</if>
 			<if test="uid!=null and uid!=''">AND t.uid = #{uid,jdbcType=VARCHAR}</if>
 			<if test="vendor!=null and vendor!=''">AND t.vendor = #{vendor,jdbcType=VARCHAR}</if>
 			<if test="clientName!=null and clientName!=''">AND t.client_name = #{clientName,jdbcType=VARCHAR}</if>
@@ -224,6 +232,7 @@
 		<where>
 			1=1
 			<if test="whereCondition!=null">
+				<if test="whereCondition.id!=null">AND t.id = #{whereCondition.id,jdbcType=BIGINT}</if>
 				<if test="whereCondition.uid!=null and whereCondition.uid!=''">AND t.uid like #{whereCondition.uidByLike,jdbcType=VARCHAR}</if>
 				<if test="whereCondition.vendor!=null and whereCondition.vendor!=''">AND t.vendor like #{whereCondition.vendorByLike,jdbcType=VARCHAR}</if>
 				<if test="whereCondition.clientName!=null and whereCondition.clientName!=''">AND t.client_name like #{whereCondition.clientNameByLike,jdbcType=VARCHAR}</if>
@@ -272,7 +281,7 @@
 	</select>
 	
 	<!-- 分页查询 -->
-	<select id="queryByPage" parameterType="com.alankin.center.common.vo.ListVo.ListReqVO"
+	<select id="queryByPage" parameterType="com.alankin.common.vo.ListVo.ListReqVO"
 		resultMap="BaseResultMap">
 		SELECT
 		<include refid="BaseColumnList" />
@@ -280,7 +289,7 @@
 		<include refid="whereForLike" />
 		<choose>
 			<when test="orderField==null">
-				ORDER BY uid DESC
+				ORDER BY id DESC
 			</when>
 			<otherwise>
 				ORDER BY ${orderField}
@@ -291,7 +300,7 @@
 
 	<!-- 查询记录数 -->
 	<select id="queryCount" resultType="int"
-		parameterType="com.alankin.center.common.vo.ListVo.ListReqVO">
+		parameterType="com.alankin.common.vo.ListVo.ListReqVO">
 		SELECT COUNT(1)  
 		<include refid="queryFrom" /> t
 		<include refid="whereForLike" />

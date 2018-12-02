@@ -14,9 +14,9 @@ import com.alankin.bo.UserLocationBO;
 import com.alankin.entity.UserLocationEntity;
 
 /**
- * 用户定位 业务处理
+ * �û���λ�� 业务处理
  * @author qym
- * @Date 2018-11-30 13:42:28
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */@Service
 public class UserLocationService extends BaseService {
@@ -26,9 +26,6 @@ public class UserLocationService extends BaseService {
 
 	/**
 	 * 分页查询列表
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public ListRespVO list(ListReqVO<UserLocationEntity> reqVO) throws CenterException {
 		return userLocationBo.queryPageAutomatic(reqVO);
@@ -37,8 +34,8 @@ public class UserLocationService extends BaseService {
 	/**
 	 * 根据ID查询单条记录
 	 */
-	public Object queryById(@Param("uid") String uid) throws CenterException {
-		return userLocationBo.queryByUid(uid);
+	public Object queryById(@Param("id") Long id) throws CenterException {
+		return userLocationBo.queryById(id);
 	}
 
 	/**
@@ -65,8 +62,8 @@ public class UserLocationService extends BaseService {
 	/**
 	 * 删除
 	 */
-	public BaseRespVO delete(@Param("uid") String[] uid) throws CenterException {
-		int deleteCount = userLocationBo.batchDeleteById(uid);
+	public BaseRespVO delete(@Param("id") Long[] id) throws CenterException {
+		int deleteCount = userLocationBo.batchDeleteById(id);
 		if (deleteCount > 0) {
 			return new BaseRespVO();
 		} else {

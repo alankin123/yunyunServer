@@ -6,9 +6,9 @@ import com.alankin.common.entity.BaseEntity;
 import com.alankin.common.vo.TableName;
 
 /**
- * 用户注册日志
+ * �û�ע����־��
  * @author qym
- * @Date 2018-11-30 13:42:28
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */
 @TableName("user_info_update")
@@ -17,32 +17,32 @@ public class UserInfoUpdateEntity extends BaseEntity {
 	/** serialVersionUID */
     private static final long serialVersionUID = 1L;
 	
-	/** 自增ID. */
+	/** ����ID. */
 	private Long id;
 	
-	/** 用户ID. */
+	/** �û�ID. */
 	private String uid;
 	
-	/** 属性名. */
+	/** ������. */
 	private String attributeName;
 	
-	/** 属性对应旧的值. */
+	/** ���Զ�Ӧ�ɵ�ֵ. */
 	private String attributeOldVal;
 	
-	/** 属性对应新的值. */
+	/** ���Զ�Ӧ�µ�ֵ. */
 	private String attributeNewVal;
 	
-	/** 修改时间. */
+	/** �޸�ʱ��. */
 	private Long updateTime;
 	
 	
 
-    /** set 自增ID. */
+    /** set ����ID. */
 	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	/** get 自增ID. */
+	/** get ����ID. */
 	public Long getId() {
 		return this.id;
 	}
@@ -53,12 +53,12 @@ public class UserInfoUpdateEntity extends BaseEntity {
 	}
 	
 
-    /** set 用户ID. */
+    /** set �û�ID. */
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
 	
-	/** get 用户ID. */
+	/** get �û�ID. */
 	public String getUid() {
 		return this.uid;
 	}
@@ -69,12 +69,12 @@ public class UserInfoUpdateEntity extends BaseEntity {
 	}
 	
 
-    /** set 属性名. */
+    /** set ������. */
 	public void setAttributeName(String attributeName) {
 		this.attributeName = attributeName;
 	}
 	
-	/** get 属性名. */
+	/** get ������. */
 	public String getAttributeName() {
 		return this.attributeName;
 	}
@@ -85,12 +85,12 @@ public class UserInfoUpdateEntity extends BaseEntity {
 	}
 	
 
-    /** set 属性对应旧的值. */
+    /** set ���Զ�Ӧ�ɵ�ֵ. */
 	public void setAttributeOldVal(String attributeOldVal) {
 		this.attributeOldVal = attributeOldVal;
 	}
 	
-	/** get 属性对应旧的值. */
+	/** get ���Զ�Ӧ�ɵ�ֵ. */
 	public String getAttributeOldVal() {
 		return this.attributeOldVal;
 	}
@@ -101,12 +101,12 @@ public class UserInfoUpdateEntity extends BaseEntity {
 	}
 	
 
-    /** set 属性对应新的值. */
+    /** set ���Զ�Ӧ�µ�ֵ. */
 	public void setAttributeNewVal(String attributeNewVal) {
 		this.attributeNewVal = attributeNewVal;
 	}
 	
-	/** get 属性对应新的值. */
+	/** get ���Զ�Ӧ�µ�ֵ. */
 	public String getAttributeNewVal() {
 		return this.attributeNewVal;
 	}
@@ -117,12 +117,12 @@ public class UserInfoUpdateEntity extends BaseEntity {
 	}
 	
 
-    /** set 修改时间. */
+    /** set �޸�ʱ��. */
 	public void setUpdateTime(Long updateTime) {
 		this.updateTime = updateTime;
 	}
 	
-	/** get 修改时间. */
+	/** get �޸�ʱ��. */
 	public Long getUpdateTime() {
 		return this.updateTime;
 	}
@@ -139,11 +139,11 @@ public class UserInfoUpdateEntity extends BaseEntity {
 
 	/**
 	 * constructor.<p>
-	 * @param uid			用户ID
-	 * @param attributeName			属性名
-	 * @param attributeOldVal			属性对应旧的值
-	 * @param attributeNewVal			属性对应新的值
-	 * @param updateTime			修改时间
+	 * @param uid			�û�ID
+	 * @param attributeName			������
+	 * @param attributeOldVal			���Զ�Ӧ�ɵ�ֵ
+	 * @param attributeNewVal			���Զ�Ӧ�µ�ֵ
+	 * @param updateTime			�޸�ʱ��
 	 */
 	public UserInfoUpdateEntity(String uid,String attributeName,String attributeOldVal,String attributeNewVal,Long updateTime){
 		this();

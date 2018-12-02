@@ -12,9 +12,9 @@ import com.alankin.mapper.UserRegisterLogMapper;
 
 
 /**
- * 用户注册日志 bo
+ * �û�ע����־�� bo
  * @author qym
- * @Date 2018-11-30 13:42:29
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */
 @Component

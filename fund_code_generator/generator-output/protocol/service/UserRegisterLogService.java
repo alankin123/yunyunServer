@@ -14,9 +14,9 @@ import com.alankin.bo.UserRegisterLogBO;
 import com.alankin.entity.UserRegisterLogEntity;
 
 /**
- * 用户注册日志 业务处理
+ * �û�ע����־�� 业务处理
  * @author qym
- * @Date 2018-11-30 13:42:29
+ * @Date 2018-12-02 15:09:36
  * @since 1.0
  */@Service
 public class UserRegisterLogService extends BaseService {
@@ -26,9 +26,6 @@ public class UserRegisterLogService extends BaseService {
 
 	/**
 	 * 分页查询列表
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public ListRespVO list(ListReqVO<UserRegisterLogEntity> reqVO) throws CenterException {
 		return userRegisterLogBo.queryPageAutomatic(reqVO);
@@ -36,9 +33,6 @@ public class UserRegisterLogService extends BaseService {
 	
 	/**
 	 * 根据ID查询单条记录
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public Object queryById(@Param("id") Long id) throws CenterException {
 		return userRegisterLogBo.queryById(id);
@@ -46,9 +40,6 @@ public class UserRegisterLogService extends BaseService {
 
 	/**
 	 * 新增
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public Object create(UserRegisterLogEntity userRegisterLog) throws CenterException {
 		userRegisterLogBo.createForValidate(userRegisterLog);
@@ -57,9 +48,6 @@ public class UserRegisterLogService extends BaseService {
 
 	/**
 	 * 修改
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public BaseRespVO update(UserRegisterLogEntity userRegisterLog) throws CenterException {
 		int updateCount = userRegisterLogBo.updateForValidate(userRegisterLog);
@@ -73,9 +61,6 @@ public class UserRegisterLogService extends BaseService {
 
 	/**
 	 * 删除
-	 * 
-	 * @param id
-	 * @return
 	 */
 	public BaseRespVO delete(@Param("id") Long[] id) throws CenterException {
 		int deleteCount = userRegisterLogBo.batchDeleteById(id);

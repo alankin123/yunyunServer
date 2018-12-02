@@ -6,9 +6,9 @@ import com.alankin.common.entity.BaseEntity;
 import com.alankin.common.vo.TableName;
 
 /**
- * 用户授权
+ * �û���Ȩ��
  * @author qym
- * @Date 2018-11-30 13:42:27
+ * @Date 2018-12-02 15:09:34
  * @since 1.0
  */
 @TableName("user_auth")
@@ -20,22 +20,22 @@ public class UserAuthEntity extends BaseEntity {
 	/** . */
 	private Long id;
 	
-	/** 用户id. */
+	/** �û�id. */
 	private String uid;
 	
-	/** 1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博. */
+	/** 1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��. */
 	private Integer identityType;
 	
-	/** 手机号 邮箱 用户名或第三方应用的唯一标识. */
+	/** �ֻ��� ���� �û����������Ӧ�õ�Ψһ��ʶ. */
 	private String identifier;
 	
-	/** 密码凭证(站内的保存密码，站外的不保存或保存token). */
+	/** ����ƾ֤(վ�ڵı������룬վ��Ĳ�����?�token). */
 	private String certificate;
 	
-	/** 绑定时间. */
+	/** ��ʱ��. */
 	private Long createTime;
 	
-	/** 更新绑定时间. */
+	/** ���°�ʱ��. */
 	private Long updateTime;
 	
 	
@@ -56,12 +56,12 @@ public class UserAuthEntity extends BaseEntity {
 	}
 	
 
-    /** set 用户id. */
+    /** set �û�id. */
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
 	
-	/** get 用户id. */
+	/** get �û�id. */
 	public String getUid() {
 		return this.uid;
 	}
@@ -72,12 +72,12 @@ public class UserAuthEntity extends BaseEntity {
 	}
 	
 
-    /** set 1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博. */
+    /** set 1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��. */
 	public void setIdentityType(Integer identityType) {
 		this.identityType = identityType;
 	}
 	
-	/** get 1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博. */
+	/** get 1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��. */
 	public Integer getIdentityType() {
 		return this.identityType;
 	}
@@ -88,12 +88,12 @@ public class UserAuthEntity extends BaseEntity {
 	}
 	
 
-    /** set 手机号 邮箱 用户名或第三方应用的唯一标识. */
+    /** set �ֻ��� ���� �û����������Ӧ�õ�Ψһ��ʶ. */
 	public void setIdentifier(String identifier) {
 		this.identifier = identifier;
 	}
 	
-	/** get 手机号 邮箱 用户名或第三方应用的唯一标识. */
+	/** get �ֻ��� ���� �û����������Ӧ�õ�Ψһ��ʶ. */
 	public String getIdentifier() {
 		return this.identifier;
 	}
@@ -104,12 +104,12 @@ public class UserAuthEntity extends BaseEntity {
 	}
 	
 
-    /** set 密码凭证(站内的保存密码，站外的不保存或保存token). */
+    /** set ����ƾ֤(վ�ڵı������룬վ��Ĳ�����?�token). */
 	public void setCertificate(String certificate) {
 		this.certificate = certificate;
 	}
 	
-	/** get 密码凭证(站内的保存密码，站外的不保存或保存token). */
+	/** get ����ƾ֤(վ�ڵı������룬վ��Ĳ�����?�token). */
 	public String getCertificate() {
 		return this.certificate;
 	}
@@ -120,12 +120,12 @@ public class UserAuthEntity extends BaseEntity {
 	}
 	
 
-    /** set 绑定时间. */
+    /** set ��ʱ��. */
 	public void setCreateTime(Long createTime) {
 		this.createTime = createTime;
 	}
 	
-	/** get 绑定时间. */
+	/** get ��ʱ��. */
 	public Long getCreateTime() {
 		return this.createTime;
 	}
@@ -136,12 +136,12 @@ public class UserAuthEntity extends BaseEntity {
 	}
 	
 
-    /** set 更新绑定时间. */
+    /** set ���°�ʱ��. */
 	public void setUpdateTime(Long updateTime) {
 		this.updateTime = updateTime;
 	}
 	
-	/** get 更新绑定时间. */
+	/** get ���°�ʱ��. */
 	public Long getUpdateTime() {
 		return this.updateTime;
 	}
@@ -158,12 +158,12 @@ public class UserAuthEntity extends BaseEntity {
 
 	/**
 	 * constructor.<p>
-	 * @param uid			用户id
-	 * @param identityType			1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博
-	 * @param identifier			手机号 邮箱 用户名或第三方应用的唯一标识
-	 * @param certificate			密码凭证(站内的保存密码，站外的不保存或保存token)
-	 * @param createTime			绑定时间
-	 * @param updateTime			更新绑定时间
+	 * @param uid			�û�id
+	 * @param identityType			1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��
+	 * @param identifier			�ֻ��� ���� �û����������Ӧ�õ�Ψһ��ʶ
+	 * @param certificate			����ƾ֤(վ�ڵı������룬վ��Ĳ�����?�token)
+	 * @param createTime			��ʱ��
+	 * @param updateTime			���°�ʱ��
 	 */
 	public UserAuthEntity(String uid,Integer identityType,String identifier,String certificate,Long createTime,Long updateTime){
 		this();

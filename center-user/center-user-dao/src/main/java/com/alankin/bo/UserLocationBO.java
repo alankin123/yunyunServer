@@ -12,9 +12,9 @@ import com.alankin.mapper.UserLocationMapper;
 
 
 /**
- * 用户定位 bo
+ * �û���λ�� bo
  * @author qym
- * @Date 2018-11-30 13:42:28
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */
 @Component

@@ -6,9 +6,9 @@ import com.alankin.common.entity.BaseEntity;
 import com.alankin.common.vo.TableName;
 
 /**
- * 用户定位
+ * �û���λ��
  * @author qym
- * @Date 2018-11-30 13:42:28
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */
 @TableName("user_location")
@@ -17,41 +17,60 @@ public class UserLocationEntity extends BaseEntity {
 	/** serialVersionUID */
     private static final long serialVersionUID = 1L;
 	
-	/** 用户ID. */
+	/** . */
+	private Long id;
+	
+	/** �û�ID. */
 	private String uid;
 	
-	/** 所在地国. */
+	/** ���ڵع�. */
 	private String currNation;
 	
-	/** 所在地省. */
+	/** ���ڵ�ʡ. */
 	private String currProvince;
 	
-	/** 所在地市. */
+	/** ���ڵ���. */
 	private String currCity;
 	
-	/** 所在地地区. */
+	/** ���ڵص���. */
 	private String currDistrict;
 	
-	/** 具体地址. */
+	/** �����ַ. */
 	private String location;
 	
-	/** 经度. */
+	/** ����. */
 	private java.math.BigDecimal longitude;
 	
-	/** 纬度. */
+	/** γ��. */
 	private java.math.BigDecimal latitude;
 	
-	/** 修改时间. */
+	/** �޸�ʱ��. */
 	private Long updateTime;
 	
 	
 
-    /** set 用户ID. */
+    /** set . */
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	/** get . */
+	public Long getId() {
+		return this.id;
+	}
+	
+	@JsonIgnore
+	public Long getIdByLike() {
+		return this.id;
+	}
+	
+
+    /** set �û�ID. */
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
 	
-	/** get 用户ID. */
+	/** get �û�ID. */
 	public String getUid() {
 		return this.uid;
 	}
@@ -62,12 +81,12 @@ public class UserLocationEntity extends BaseEntity {
 	}
 	
 
-    /** set 所在地国. */
+    /** set ���ڵع�. */
 	public void setCurrNation(String currNation) {
 		this.currNation = currNation;
 	}
 	
-	/** get 所在地国. */
+	/** get ���ڵع�. */
 	public String getCurrNation() {
 		return this.currNation;
 	}
@@ -78,12 +97,12 @@ public class UserLocationEntity extends BaseEntity {
 	}
 	
 
-    /** set 所在地省. */
+    /** set ���ڵ�ʡ. */
 	public void setCurrProvince(String currProvince) {
 		this.currProvince = currProvince;
 	}
 	
-	/** get 所在地省. */
+	/** get ���ڵ�ʡ. */
 	public String getCurrProvince() {
 		return this.currProvince;
 	}
@@ -94,12 +113,12 @@ public class UserLocationEntity extends BaseEntity {
 	}
 	
 
-    /** set 所在地市. */
+    /** set ���ڵ���. */
 	public void setCurrCity(String currCity) {
 		this.currCity = currCity;
 	}
 	
-	/** get 所在地市. */
+	/** get ���ڵ���. */
 	public String getCurrCity() {
 		return this.currCity;
 	}
@@ -110,12 +129,12 @@ public class UserLocationEntity extends BaseEntity {
 	}
 	
 
-    /** set 所在地地区. */
+    /** set ���ڵص���. */
 	public void setCurrDistrict(String currDistrict) {
 		this.currDistrict = currDistrict;
 	}
 	
-	/** get 所在地地区. */
+	/** get ���ڵص���. */
 	public String getCurrDistrict() {
 		return this.currDistrict;
 	}
@@ -126,12 +145,12 @@ public class UserLocationEntity extends BaseEntity {
 	}
 	
 
-    /** set 具体地址. */
+    /** set �����ַ. */
 	public void setLocation(String location) {
 		this.location = location;
 	}
 	
-	/** get 具体地址. */
+	/** get �����ַ. */
 	public String getLocation() {
 		return this.location;
 	}
@@ -142,12 +161,12 @@ public class UserLocationEntity extends BaseEntity {
 	}
 	
 
-    /** set 经度. */
+    /** set ����. */
 	public void setLongitude(java.math.BigDecimal longitude) {
 		this.longitude = longitude;
 	}
 	
-	/** get 经度. */
+	/** get ����. */
 	public java.math.BigDecimal getLongitude() {
 		return this.longitude;
 	}
@@ -158,12 +177,12 @@ public class UserLocationEntity extends BaseEntity {
 	}
 	
 
-    /** set 纬度. */
+    /** set γ��. */
 	public void setLatitude(java.math.BigDecimal latitude) {
 		this.latitude = latitude;
 	}
 	
-	/** get 纬度. */
+	/** get γ��. */
 	public java.math.BigDecimal getLatitude() {
 		return this.latitude;
 	}
@@ -174,12 +193,12 @@ public class UserLocationEntity extends BaseEntity {
 	}
 	
 
-    /** set 修改时间. */
+    /** set �޸�ʱ��. */
 	public void setUpdateTime(Long updateTime) {
 		this.updateTime = updateTime;
 	}
 	
-	/** get 修改时间. */
+	/** get �޸�ʱ��. */
 	public Long getUpdateTime() {
 		return this.updateTime;
 	}
@@ -196,17 +215,19 @@ public class UserLocationEntity extends BaseEntity {
 
 	/**
 	 * constructor.<p>
-	 * @param currNation			所在地国
-	 * @param currProvince			所在地省
-	 * @param currCity			所在地市
-	 * @param currDistrict			所在地地区
-	 * @param location			具体地址
-	 * @param longitude			经度
-	 * @param latitude			纬度
-	 * @param updateTime			修改时间
+	 * @param uid			�û�ID
+	 * @param currNation			���ڵع�
+	 * @param currProvince			���ڵ�ʡ
+	 * @param currCity			���ڵ���
+	 * @param currDistrict			���ڵص���
+	 * @param location			�����ַ
+	 * @param longitude			����
+	 * @param latitude			γ��
+	 * @param updateTime			�޸�ʱ��
 	 */
-	public UserLocationEntity(String currNation,String currProvince,String currCity,String currDistrict,String location,java.math.BigDecimal longitude,java.math.BigDecimal latitude,Long updateTime){
+	public UserLocationEntity(String uid,String currNation,String currProvince,String currCity,String currDistrict,String location,java.math.BigDecimal longitude,java.math.BigDecimal latitude,Long updateTime){
 		this();
+		this.uid = uid;
 		this.currNation = currNation;
 		this.currProvince = currProvince;
 		this.currCity = currCity;
@@ -220,6 +241,7 @@ public class UserLocationEntity extends BaseEntity {
 	@Override
 	public String toString() {
 		return new StringBuilder().append("UserLocationEntity[")
+			.append("Id=").append(getId()).append(", ")
 			.append("Uid=").append(getUid()).append(", ")
 			.append("CurrNation=").append(getCurrNation()).append(", ")
 			.append("CurrProvince=").append(getCurrProvince()).append(", ")

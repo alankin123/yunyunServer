@@ -6,9 +6,9 @@ import com.alankin.common.entity.BaseEntity;
 import com.alankin.common.vo.TableName;
 
 /**
- * 登陆日志
+ * ��½��־��
  * @author qym
- * @Date 2018-11-30 13:42:29
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */
 @TableName("user_login_log")
@@ -20,37 +20,37 @@ public class UserLoginLogEntity extends BaseEntity {
 	/** . */
 	private Long id;
 	
-	/** 用户uid. */
+	/** �û�uid. */
 	private String uid;
 	
-	/** 登录方式 第三方/邮箱/手机等. */
+	/** ��¼��ʽ ������/����/�ֻ���. */
 	private Integer type;
 	
-	/** 操作类型 1登陆成功  2登出成功 3登录失败 4登出失败. */
+	/** �������� 1��½�ɹ�  2�ǳ��ɹ� 3��¼ʧ�� 4�ǳ�ʧ��. */
 	private Integer command;
 	
-	/** 客户端版本号. */
+	/** �ͻ��˰汾��. */
 	private String version;
 	
-	/** 客户端. */
+	/** �ͻ���. */
 	private String client;
 	
-	/** 登录时设备号. */
+	/** ��¼ʱ�豸��. */
 	private String deviceId;
 	
-	/** 登录ip. */
+	/** ��¼ip. */
 	private String lastip;
 	
-	/** 手机系统. */
+	/** �ֻ�ϵͳ. */
 	private String os;
 	
-	/** 系统版本. */
+	/** ϵͳ�汾. */
 	private String osver;
 	
 	/** . */
 	private String text;
 	
-	/** 操作时间. */
+	/** ����ʱ��. */
 	private Long createTime;
 	
 	
@@ -71,12 +71,12 @@ public class UserLoginLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 用户uid. */
+    /** set �û�uid. */
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
 	
-	/** get 用户uid. */
+	/** get �û�uid. */
 	public String getUid() {
 		return this.uid;
 	}
@@ -87,12 +87,12 @@ public class UserLoginLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 登录方式 第三方/邮箱/手机等. */
+    /** set ��¼��ʽ ������/����/�ֻ���. */
 	public void setType(Integer type) {
 		this.type = type;
 	}
 	
-	/** get 登录方式 第三方/邮箱/手机等. */
+	/** get ��¼��ʽ ������/����/�ֻ���. */
 	public Integer getType() {
 		return this.type;
 	}
@@ -103,12 +103,12 @@ public class UserLoginLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 操作类型 1登陆成功  2登出成功 3登录失败 4登出失败. */
+    /** set �������� 1��½�ɹ�  2�ǳ��ɹ� 3��¼ʧ�� 4�ǳ�ʧ��. */
 	public void setCommand(Integer command) {
 		this.command = command;
 	}
 	
-	/** get 操作类型 1登陆成功  2登出成功 3登录失败 4登出失败. */
+	/** get �������� 1��½�ɹ�  2�ǳ��ɹ� 3��¼ʧ�� 4�ǳ�ʧ��. */
 	public Integer getCommand() {
 		return this.command;
 	}
@@ -119,12 +119,12 @@ public class UserLoginLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 客户端版本号. */
+    /** set �ͻ��˰汾��. */
 	public void setVersion(String version) {
 		this.version = version;
 	}
 	
-	/** get 客户端版本号. */
+	/** get �ͻ��˰汾��. */
 	public String getVersion() {
 		return this.version;
 	}
@@ -135,12 +135,12 @@ public class UserLoginLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 客户端. */
+    /** set �ͻ���. */
 	public void setClient(String client) {
 		this.client = client;
 	}
 	
-	/** get 客户端. */
+	/** get �ͻ���. */
 	public String getClient() {
 		return this.client;
 	}
@@ -151,12 +151,12 @@ public class UserLoginLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 登录时设备号. */
+    /** set ��¼ʱ�豸��. */
 	public void setDeviceId(String deviceId) {
 		this.deviceId = deviceId;
 	}
 	
-	/** get 登录时设备号. */
+	/** get ��¼ʱ�豸��. */
 	public String getDeviceId() {
 		return this.deviceId;
 	}
@@ -167,12 +167,12 @@ public class UserLoginLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 登录ip. */
+    /** set ��¼ip. */
 	public void setLastip(String lastip) {
 		this.lastip = lastip;
 	}
 	
-	/** get 登录ip. */
+	/** get ��¼ip. */
 	public String getLastip() {
 		return this.lastip;
 	}
@@ -183,12 +183,12 @@ public class UserLoginLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 手机系统. */
+    /** set �ֻ�ϵͳ. */
 	public void setOs(String os) {
 		this.os = os;
 	}
 	
-	/** get 手机系统. */
+	/** get �ֻ�ϵͳ. */
 	public String getOs() {
 		return this.os;
 	}
@@ -199,12 +199,12 @@ public class UserLoginLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 系统版本. */
+    /** set ϵͳ�汾. */
 	public void setOsver(String osver) {
 		this.osver = osver;
 	}
 	
-	/** get 系统版本. */
+	/** get ϵͳ�汾. */
 	public String getOsver() {
 		return this.osver;
 	}
@@ -231,12 +231,12 @@ public class UserLoginLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 操作时间. */
+    /** set ����ʱ��. */
 	public void setCreateTime(Long createTime) {
 		this.createTime = createTime;
 	}
 	
-	/** get 操作时间. */
+	/** get ����ʱ��. */
 	public Long getCreateTime() {
 		return this.createTime;
 	}
@@ -253,17 +253,17 @@ public class UserLoginLogEntity extends BaseEntity {
 
 	/**
 	 * constructor.<p>
-	 * @param uid			用户uid
-	 * @param type			登录方式 第三方/邮箱/手机等
-	 * @param command			操作类型 1登陆成功  2登出成功 3登录失败 4登出失败
-	 * @param version			客户端版本号
-	 * @param client			客户端
-	 * @param deviceId			登录时设备号
-	 * @param lastip			登录ip
-	 * @param os			手机系统
-	 * @param osver			系统版本
+	 * @param uid			�û�uid
+	 * @param type			��¼��ʽ ������/����/�ֻ���
+	 * @param command			�������� 1��½�ɹ�  2�ǳ��ɹ� 3��¼ʧ�� 4�ǳ�ʧ��
+	 * @param version			�ͻ��˰汾��
+	 * @param client			�ͻ���
+	 * @param deviceId			��¼ʱ�豸��
+	 * @param lastip			��¼ip
+	 * @param os			�ֻ�ϵͳ
+	 * @param osver			ϵͳ�汾
 	 * @param text			
-	 * @param createTime			操作时间
+	 * @param createTime			����ʱ��
 	 */
 	public UserLoginLogEntity(String uid,Integer type,Integer command,String version,String client,String deviceId,String lastip,String os,String osver,String text,Long createTime){
 		this();

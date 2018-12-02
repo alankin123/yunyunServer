@@ -176,7 +176,7 @@
 	</select>
 	
 	<!-- 分页查询 -->
-	<select id="queryByPage" parameterType="com.alankin.center.common.vo.ListVo.ListReqVO"
+	<select id="queryByPage" parameterType="com.alankin.common.vo.ListVo.ListReqVO"
 		resultMap="BaseResultMap">
 		SELECT
 		<include refid="BaseColumnList" />
@@ -195,7 +195,7 @@
 
 	<!-- 查询记录数 -->
 	<select id="queryCount" resultType="int"
-		parameterType="com.alankin.center.common.vo.ListVo.ListReqVO">
+		parameterType="com.alankin.common.vo.ListVo.ListReqVO">
 		SELECT COUNT(1)  
 		<include refid="queryFrom" /> t
 		<include refid="whereForLike" />

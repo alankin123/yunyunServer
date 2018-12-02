@@ -14,9 +14,9 @@ import com.alankin.bo.UserInfoUpdateBO;
 import com.alankin.entity.UserInfoUpdateEntity;
 
 /**
- * 用户注册日志 业务处理
+ * �û�ע����־�� 业务处理
  * @author qym
- * @Date 2018-11-30 13:42:28
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */@Service
 public class UserInfoUpdateService extends BaseService {
@@ -26,9 +26,6 @@ public class UserInfoUpdateService extends BaseService {
 
 	/**
 	 * 分页查询列表
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public ListRespVO list(ListReqVO<UserInfoUpdateEntity> reqVO) throws CenterException {
 		return userInfoUpdateBo.queryPageAutomatic(reqVO);

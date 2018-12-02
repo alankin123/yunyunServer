@@ -12,9 +12,9 @@ import com.alankin.mapper.UserExtraMapper;
 
 
 /**
- * 用户额外信息 bo
+ * �û�������Ϣ�� bo
  * @author qym
- * @Date 2018-11-30 13:42:28
+ * @Date 2018-12-02 15:09:34
  * @since 1.0
  */
 @Component

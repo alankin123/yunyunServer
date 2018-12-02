@@ -8,7 +8,7 @@ public class Setup {
 		System.setProperty("dubbo.application.name", "center-user-local");
 		System.setProperty("dubbo.consumer.timeout", "80000");
 		System.setProperty("dubbo.consumer.retries", "0");
-		System.setProperty("dubbo.registry.address", "zookeeper://192.168.140.128:2181?register=false");
+		System.setProperty("dubbo.registry.address", "zookeeper://192.168.235.130:2181?register=true");
 		System.setProperty("dubbo.protocol.port", "20101");
 		// 加载spring容器
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:META-INF/spring/applicationContext-provider.xml");

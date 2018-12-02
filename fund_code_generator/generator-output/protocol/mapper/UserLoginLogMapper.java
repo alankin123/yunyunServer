@@ -8,9 +8,9 @@ import com.alankin.entity.UserLoginLogEntity;
 import org.springframework.stereotype.Repository;
 
 /**
- * 登陆日志 Mapper
+ * ��½��־�� Mapper
  * @author qym
- * @Date 2018-11-30 13:42:29
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */
 @Repository

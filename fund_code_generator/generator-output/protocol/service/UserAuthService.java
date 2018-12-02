@@ -14,9 +14,9 @@ import com.alankin.bo.UserAuthBO;
 import com.alankin.entity.UserAuthEntity;
 
 /**
- * 用户授权 业务处理
+ * �û���Ȩ�� 业务处理
  * @author qym
- * @Date 2018-11-30 13:42:27
+ * @Date 2018-12-02 15:09:34
  * @since 1.0
  */@Service
 public class UserAuthService extends BaseService {
@@ -26,9 +26,6 @@ public class UserAuthService extends BaseService {
 
 	/**
 	 * 分页查询列表
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public ListRespVO list(ListReqVO<UserAuthEntity> reqVO) throws CenterException {
 		return userAuthBo.queryPageAutomatic(reqVO);
@@ -36,9 +33,6 @@ public class UserAuthService extends BaseService {
 	
 	/**
 	 * 根据ID查询单条记录
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public Object queryById(@Param("id") Long id) throws CenterException {
 		return userAuthBo.queryById(id);
@@ -46,9 +40,6 @@ public class UserAuthService extends BaseService {
 
 	/**
 	 * 新增
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public Object create(UserAuthEntity userAuth) throws CenterException {
 		userAuthBo.createForValidate(userAuth);
@@ -57,9 +48,6 @@ public class UserAuthService extends BaseService {
 
 	/**
 	 * 修改
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public BaseRespVO update(UserAuthEntity userAuth) throws CenterException {
 		int updateCount = userAuthBo.updateForValidate(userAuth);
@@ -73,9 +61,6 @@ public class UserAuthService extends BaseService {
 
 	/**
 	 * 删除
-	 * 
-	 * @param id
-	 * @return
 	 */
 	public BaseRespVO delete(@Param("id") Long[] id) throws CenterException {
 		int deleteCount = userAuthBo.batchDeleteById(id);

@@ -14,9 +14,9 @@ import com.alankin.bo.UserLoginLogBO;
 import com.alankin.entity.UserLoginLogEntity;
 
 /**
- * 登陆日志 业务处理
+ * ��½��־�� 业务处理
  * @author qym
- * @Date 2018-11-30 13:42:29
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */@Service
 public class UserLoginLogService extends BaseService {
@@ -26,9 +26,6 @@ public class UserLoginLogService extends BaseService {
 
 	/**
 	 * 分页查询列表
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public ListRespVO list(ListReqVO<UserLoginLogEntity> reqVO) throws CenterException {
 		return userLoginLogBo.queryPageAutomatic(reqVO);

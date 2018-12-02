@@ -108,7 +108,7 @@
 
         <!-- database jar -->
         <oracle.version>11.2.0.4</oracle.version>
-        <mysql.jdbc.version>5.1.21</mysql.jdbc.version>
+        <mysql.jdbc.version>8.0.12</mysql.jdbc.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -787,13 +787,13 @@
                 </plugin>
 
                 <!-- war打包插件, 设定war包名称不带版本号 -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <configuration>
-                        <warName>${project.build.finalName}</warName>
-                    </configuration>
-                </plugin>
+                <!--<plugin>-->
+                    <!--<groupId>org.apache.maven.plugins</groupId>-->
+                    <!--<artifactId>maven-war-plugin</artifactId>-->
+                    <!--<configuration>-->
+                        <!--<warName>${project.build.finalName}</warName>-->
+                    <!--</configuration>-->
+                <!--</plugin>-->
 
                 <!-- deploy插件 -->
                 <plugin>

@@ -202,10 +202,10 @@
                 </excludes>
             </resource>
         </resources>
-        <pluginManagement>
+        <!--<pluginManagement>
 
             <plugins>
-                <!-- Ignore/Execute plugin execution -->
+                &lt;!&ndash; Ignore/Execute plugin execution &ndash;&gt;
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
@@ -232,7 +232,7 @@
                     </configuration>
                 </plugin>
             </plugins>
-        </pluginManagement>
+        </pluginManagement>-->
         <defaultGoal>compile</defaultGoal>
     </build>
 

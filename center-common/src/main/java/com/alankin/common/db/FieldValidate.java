@@ -43,7 +43,7 @@ public class FieldValidate {
 	/**
 	 * 初始化
 	 */
-	@PostConstruct
+//	@PostConstruct
 	public void init() {
 		// 异步完成
 		CenterThreadPool.asyncProxyExecutor(this, "initFieldConf");

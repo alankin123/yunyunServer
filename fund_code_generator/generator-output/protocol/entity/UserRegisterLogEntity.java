@@ -6,9 +6,9 @@ import com.alankin.common.entity.BaseEntity;
 import com.alankin.common.vo.TableName;
 
 /**
- * 用户注册日志
+ * �û�ע����־��
  * @author qym
- * @Date 2018-11-30 13:42:29
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */
 @TableName("user_register_log")
@@ -17,32 +17,32 @@ public class UserRegisterLogEntity extends BaseEntity {
 	/** serialVersionUID */
     private static final long serialVersionUID = 1L;
 	
-	/** 自增ID. */
+	/** ����ID. */
 	private Long id;
 	
-	/** 用户ID. */
+	/** �û�ID. */
 	private String uid;
 	
-	/** 注册方式1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博. */
+	/** ע�᷽ʽ1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��. */
 	private Integer registerMethod;
 	
-	/** 注册时间. */
+	/** ע��ʱ��. */
 	private Long registerTime;
 	
-	/** 注册IP. */
+	/** ע��IP. */
 	private String registerIp;
 	
-	/** 注册客户端. */
+	/** ע��ͻ���. */
 	private String registerClient;
 	
 	
 
-    /** set 自增ID. */
+    /** set ����ID. */
 	public void setId(Long id) {
 		this.id = id;
 	}
 	
-	/** get 自增ID. */
+	/** get ����ID. */
 	public Long getId() {
 		return this.id;
 	}
@@ -53,12 +53,12 @@ public class UserRegisterLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 用户ID. */
+    /** set �û�ID. */
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
 	
-	/** get 用户ID. */
+	/** get �û�ID. */
 	public String getUid() {
 		return this.uid;
 	}
@@ -69,12 +69,12 @@ public class UserRegisterLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 注册方式1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博. */
+    /** set ע�᷽ʽ1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��. */
 	public void setRegisterMethod(Integer registerMethod) {
 		this.registerMethod = registerMethod;
 	}
 	
-	/** get 注册方式1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博. */
+	/** get ע�᷽ʽ1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��. */
 	public Integer getRegisterMethod() {
 		return this.registerMethod;
 	}
@@ -85,12 +85,12 @@ public class UserRegisterLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 注册时间. */
+    /** set ע��ʱ��. */
 	public void setRegisterTime(Long registerTime) {
 		this.registerTime = registerTime;
 	}
 	
-	/** get 注册时间. */
+	/** get ע��ʱ��. */
 	public Long getRegisterTime() {
 		return this.registerTime;
 	}
@@ -101,12 +101,12 @@ public class UserRegisterLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 注册IP. */
+    /** set ע��IP. */
 	public void setRegisterIp(String registerIp) {
 		this.registerIp = registerIp;
 	}
 	
-	/** get 注册IP. */
+	/** get ע��IP. */
 	public String getRegisterIp() {
 		return this.registerIp;
 	}
@@ -117,12 +117,12 @@ public class UserRegisterLogEntity extends BaseEntity {
 	}
 	
 
-    /** set 注册客户端. */
+    /** set ע��ͻ���. */
 	public void setRegisterClient(String registerClient) {
 		this.registerClient = registerClient;
 	}
 	
-	/** get 注册客户端. */
+	/** get ע��ͻ���. */
 	public String getRegisterClient() {
 		return this.registerClient;
 	}
@@ -139,11 +139,11 @@ public class UserRegisterLogEntity extends BaseEntity {
 
 	/**
 	 * constructor.<p>
-	 * @param uid			用户ID
-	 * @param registerMethod			注册方式1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博
-	 * @param registerTime			注册时间
-	 * @param registerIp			注册IP
-	 * @param registerClient			注册客户端
+	 * @param uid			�û�ID
+	 * @param registerMethod			ע�᷽ʽ1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��
+	 * @param registerTime			ע��ʱ��
+	 * @param registerIp			ע��IP
+	 * @param registerClient			ע��ͻ���
 	 */
 	public UserRegisterLogEntity(String uid,Integer registerMethod,Long registerTime,String registerIp,String registerClient){
 		this();

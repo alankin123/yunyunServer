@@ -6,9 +6,9 @@ import com.alankin.common.entity.BaseEntity;
 import com.alankin.common.vo.TableName;
 
 /**
- * 用户基础信息
+ * �û�������Ϣ��
  * @author qym
- * @Date 2018-11-30 13:42:27
+ * @Date 2018-12-02 15:09:34
  * @since 1.0
  */
 @TableName("user_base")
@@ -17,68 +17,87 @@ public class UserBaseEntity extends BaseEntity {
 	/** serialVersionUID */
     private static final long serialVersionUID = 1L;
 	
-	/** 用户ID. */
+	/** . */
+	private Long id;
+	
+	/** �û�ID. */
 	private String uid;
 	
-	/** 2正常用户 3禁言用户 4虚拟用户 5运营. */
+	/** 2�����û� 3�����û� 4�����û� 5��Ӫ. */
 	private Integer userRole;
 	
-	/** 注册来源：1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博. */
+	/** ע����Դ��1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��. */
 	private Integer registerSource;
 	
-	/** 用户账号，必须唯一. */
+	/** �û��˺ţ�����Ψһ. */
 	private String userName;
 	
-	/** 用户昵称. */
+	/** �û��ǳ�. */
 	private String nickName;
 	
-	/** 用户性别 0-female 1-male. */
-	private Integer gender;
+	/** �û��Ա� 0-female 1-male. */
+	private Boolean gender;
 	
-	/** 用户生日. */
+	/** �û�����. */
 	private Long birthday;
 	
-	/** 用户个人签名. */
+	/** �û�����ǩ��. */
 	private String signature;
 	
-	/** 手机号码(唯一). */
+	/** �ֻ�����(Ψһ). */
 	private String mobile;
 	
-	/** 手机号码绑定时间. */
+	/** �ֻ������ʱ��. */
 	private Long mobileBindTime;
 	
-	/** 邮箱(唯一). */
+	/** ����(Ψһ). */
 	private String email;
 	
-	/** 邮箱绑定时间. */
+	/** �����ʱ��. */
 	private Long emailBindTime;
 	
-	/** 头像. */
+	/** ͷ��. */
 	private String face;
 	
-	/** 头像 200x200x80. */
+	/** ͷ�� 200x200x80. */
 	private String face200;
 	
-	/** 原图头像. */
+	/** ԭͼͷ��. */
 	private String srcface;
 	
-	/** 创建时间. */
-	private java.util.Date createTime;
+	/** ����ʱ��. */
+	private Long createTime;
 	
-	/** 修改时间. */
-	private java.util.Date updateTime;
+	/** �޸�ʱ��. */
+	private Long updateTime;
 	
-	/** 用户设备push_token. */
+	/** �û��豸push_token. */
 	private String pushToken;
 	
 	
 
-    /** set 用户ID. */
+    /** set . */
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	/** get . */
+	public Long getId() {
+		return this.id;
+	}
+	
+	@JsonIgnore
+	public Long getIdByLike() {
+		return this.id;
+	}
+	
+
+    /** set �û�ID. */
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
 	
-	/** get 用户ID. */
+	/** get �û�ID. */
 	public String getUid() {
 		return this.uid;
 	}
@@ -89,12 +108,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 2正常用户 3禁言用户 4虚拟用户 5运营. */
+    /** set 2�����û� 3�����û� 4�����û� 5��Ӫ. */
 	public void setUserRole(Integer userRole) {
 		this.userRole = userRole;
 	}
 	
-	/** get 2正常用户 3禁言用户 4虚拟用户 5运营. */
+	/** get 2�����û� 3�����û� 4�����û� 5��Ӫ. */
 	public Integer getUserRole() {
 		return this.userRole;
 	}
@@ -105,12 +124,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 注册来源：1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博. */
+    /** set ע����Դ��1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��. */
 	public void setRegisterSource(Integer registerSource) {
 		this.registerSource = registerSource;
 	}
 	
-	/** get 注册来源：1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博. */
+	/** get ע����Դ��1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��. */
 	public Integer getRegisterSource() {
 		return this.registerSource;
 	}
@@ -121,12 +140,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 用户账号，必须唯一. */
+    /** set �û��˺ţ�����Ψһ. */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 	
-	/** get 用户账号，必须唯一. */
+	/** get �û��˺ţ�����Ψһ. */
 	public String getUserName() {
 		return this.userName;
 	}
@@ -137,12 +156,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 用户昵称. */
+    /** set �û��ǳ�. */
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
 	
-	/** get 用户昵称. */
+	/** get �û��ǳ�. */
 	public String getNickName() {
 		return this.nickName;
 	}
@@ -153,28 +172,28 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 用户性别 0-female 1-male. */
-	public void setGender(Integer gender) {
+    /** set �û��Ա� 0-female 1-male. */
+	public void setGender(Boolean gender) {
 		this.gender = gender;
 	}
 	
-	/** get 用户性别 0-female 1-male. */
-	public Integer getGender() {
+	/** get �û��Ա� 0-female 1-male. */
+	public Boolean getGender() {
 		return this.gender;
 	}
 	
 	@JsonIgnore
-	public Integer getGenderByLike() {
+	public Boolean getGenderByLike() {
 		return this.gender;
 	}
 	
 
-    /** set 用户生日. */
+    /** set �û�����. */
 	public void setBirthday(Long birthday) {
 		this.birthday = birthday;
 	}
 	
-	/** get 用户生日. */
+	/** get �û�����. */
 	public Long getBirthday() {
 		return this.birthday;
 	}
@@ -185,12 +204,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 用户个人签名. */
+    /** set �û�����ǩ��. */
 	public void setSignature(String signature) {
 		this.signature = signature;
 	}
 	
-	/** get 用户个人签名. */
+	/** get �û�����ǩ��. */
 	public String getSignature() {
 		return this.signature;
 	}
@@ -201,12 +220,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 手机号码(唯一). */
+    /** set �ֻ�����(Ψһ). */
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 	
-	/** get 手机号码(唯一). */
+	/** get �ֻ�����(Ψһ). */
 	public String getMobile() {
 		return this.mobile;
 	}
@@ -217,12 +236,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 手机号码绑定时间. */
+    /** set �ֻ������ʱ��. */
 	public void setMobileBindTime(Long mobileBindTime) {
 		this.mobileBindTime = mobileBindTime;
 	}
 	
-	/** get 手机号码绑定时间. */
+	/** get �ֻ������ʱ��. */
 	public Long getMobileBindTime() {
 		return this.mobileBindTime;
 	}
@@ -233,12 +252,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 邮箱(唯一). */
+    /** set ����(Ψһ). */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 	
-	/** get 邮箱(唯一). */
+	/** get ����(Ψһ). */
 	public String getEmail() {
 		return this.email;
 	}
@@ -249,12 +268,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 邮箱绑定时间. */
+    /** set �����ʱ��. */
 	public void setEmailBindTime(Long emailBindTime) {
 		this.emailBindTime = emailBindTime;
 	}
 	
-	/** get 邮箱绑定时间. */
+	/** get �����ʱ��. */
 	public Long getEmailBindTime() {
 		return this.emailBindTime;
 	}
@@ -265,12 +284,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 头像. */
+    /** set ͷ��. */
 	public void setFace(String face) {
 		this.face = face;
 	}
 	
-	/** get 头像. */
+	/** get ͷ��. */
 	public String getFace() {
 		return this.face;
 	}
@@ -281,12 +300,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 头像 200x200x80. */
+    /** set ͷ�� 200x200x80. */
 	public void setFace200(String face200) {
 		this.face200 = face200;
 	}
 	
-	/** get 头像 200x200x80. */
+	/** get ͷ�� 200x200x80. */
 	public String getFace200() {
 		return this.face200;
 	}
@@ -297,12 +316,12 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 原图头像. */
+    /** set ԭͼͷ��. */
 	public void setSrcface(String srcface) {
 		this.srcface = srcface;
 	}
 	
-	/** get 原图头像. */
+	/** get ԭͼͷ��. */
 	public String getSrcface() {
 		return this.srcface;
 	}
@@ -313,44 +332,44 @@ public class UserBaseEntity extends BaseEntity {
 	}
 	
 
-    /** set 创建时间. */
-	public void setCreateTime(java.util.Date createTime) {
+    /** set ����ʱ��. */
+	public void setCreateTime(Long createTime) {
 		this.createTime = createTime;
 	}
 	
-	/** get 创建时间. */
-	public java.util.Date getCreateTime() {
+	/** get ����ʱ��. */
+	public Long getCreateTime() {
 		return this.createTime;
 	}
 	
 	@JsonIgnore
-	public java.util.Date getCreateTimeByLike() {
+	public Long getCreateTimeByLike() {
 		return this.createTime;
 	}
 	
 
-    /** set 修改时间. */
-	public void setUpdateTime(java.util.Date updateTime) {
+    /** set �޸�ʱ��. */
+	public void setUpdateTime(Long updateTime) {
 		this.updateTime = updateTime;
 	}
 	
-	/** get 修改时间. */
-	public java.util.Date getUpdateTime() {
+	/** get �޸�ʱ��. */
+	public Long getUpdateTime() {
 		return this.updateTime;
 	}
 	
 	@JsonIgnore
-	public java.util.Date getUpdateTimeByLike() {
+	public Long getUpdateTimeByLike() {
 		return this.updateTime;
 	}
 	
 
-    /** set 用户设备push_token. */
+    /** set �û��豸push_token. */
 	public void setPushToken(String pushToken) {
 		this.pushToken = pushToken;
 	}
 	
-	/** get 用户设备push_token. */
+	/** get �û��豸push_token. */
 	public String getPushToken() {
 		return this.pushToken;
 	}
@@ -367,26 +386,28 @@ public class UserBaseEntity extends BaseEntity {
 
 	/**
 	 * constructor.<p>
-	 * @param userRole			2正常用户 3禁言用户 4虚拟用户 5运营
-	 * @param registerSource			注册来源：1手机号 2邮箱 3用户名 4qq 5微信 6腾讯微博 7新浪微博
-	 * @param userName			用户账号，必须唯一
-	 * @param nickName			用户昵称
-	 * @param gender			用户性别 0-female 1-male
-	 * @param birthday			用户生日
-	 * @param signature			用户个人签名
-	 * @param mobile			手机号码(唯一)
-	 * @param mobileBindTime			手机号码绑定时间
-	 * @param email			邮箱(唯一)
-	 * @param emailBindTime			邮箱绑定时间
-	 * @param face			头像
-	 * @param face200			头像 200x200x80
-	 * @param srcface			原图头像
-	 * @param createTime			创建时间
-	 * @param updateTime			修改时间
-	 * @param pushToken			用户设备push_token
+	 * @param uid			�û�ID
+	 * @param userRole			2�����û� 3�����û� 4�����û� 5��Ӫ
+	 * @param registerSource			ע����Դ��1�ֻ��� 2���� 3�û��� 4qq 5΢�� 6��Ѷ΢�� 7����΢��
+	 * @param userName			�û��˺ţ�����Ψһ
+	 * @param nickName			�û��ǳ�
+	 * @param gender			�û��Ա� 0-female 1-male
+	 * @param birthday			�û�����
+	 * @param signature			�û�����ǩ��
+	 * @param mobile			�ֻ�����(Ψһ)
+	 * @param mobileBindTime			�ֻ������ʱ��
+	 * @param email			����(Ψһ)
+	 * @param emailBindTime			�����ʱ��
+	 * @param face			ͷ��
+	 * @param face200			ͷ�� 200x200x80
+	 * @param srcface			ԭͼͷ��
+	 * @param createTime			����ʱ��
+	 * @param updateTime			�޸�ʱ��
+	 * @param pushToken			�û��豸push_token
 	 */
-	public UserBaseEntity(Integer userRole,Integer registerSource,String userName,String nickName,Integer gender,Long birthday,String signature,String mobile,Long mobileBindTime,String email,Long emailBindTime,String face,String face200,String srcface,java.util.Date createTime,java.util.Date updateTime,String pushToken){
+	public UserBaseEntity(String uid,Integer userRole,Integer registerSource,String userName,String nickName,Boolean gender,Long birthday,String signature,String mobile,Long mobileBindTime,String email,Long emailBindTime,String face,String face200,String srcface,Long createTime,Long updateTime,String pushToken){
 		this();
+		this.uid = uid;
 		this.userRole = userRole;
 		this.registerSource = registerSource;
 		this.userName = userName;
@@ -409,6 +430,7 @@ public class UserBaseEntity extends BaseEntity {
 	@Override
 	public String toString() {
 		return new StringBuilder().append("UserBaseEntity[")
+			.append("Id=").append(getId()).append(", ")
 			.append("Uid=").append(getUid()).append(", ")
 			.append("UserRole=").append(getUserRole()).append(", ")
 			.append("RegisterSource=").append(getRegisterSource()).append(", ")

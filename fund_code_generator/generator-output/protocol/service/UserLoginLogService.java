@@ -14,9 +14,9 @@ import com.alankin.bo.UserLoginLogBO;
 import com.alankin.entity.UserLoginLogEntity;
 
 /**
- * 登陆日志 业务处理
+ * ��½��־�� 业务处理
  * @author qym
- * @Date 2018-11-30 13:42:29
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */@Service
 public class UserLoginLogService extends BaseService {
@@ -26,9 +26,6 @@ public class UserLoginLogService extends BaseService {
 
 	/**
 	 * 分页查询列表
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public ListRespVO list(ListReqVO<UserLoginLogEntity> reqVO) throws CenterException {
 		return userLoginLogBo.queryPageAutomatic(reqVO);
@@ -36,9 +33,6 @@ public class UserLoginLogService extends BaseService {
 	
 	/**
 	 * 根据ID查询单条记录
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public Object queryById(@Param("id") Long id) throws CenterException {
 		return userLoginLogBo.queryById(id);
@@ -46,9 +40,6 @@ public class UserLoginLogService extends BaseService {
 
 	/**
 	 * 新增
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public Object create(UserLoginLogEntity userLoginLog) throws CenterException {
 		userLoginLogBo.createForValidate(userLoginLog);
@@ -57,9 +48,6 @@ public class UserLoginLogService extends BaseService {
 
 	/**
 	 * 修改
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public BaseRespVO update(UserLoginLogEntity userLoginLog) throws CenterException {
 		int updateCount = userLoginLogBo.updateForValidate(userLoginLog);
@@ -73,9 +61,6 @@ public class UserLoginLogService extends BaseService {
 
 	/**
 	 * 删除
-	 * 
-	 * @param id
-	 * @return
 	 */
 	public BaseRespVO delete(@Param("id") Long[] id) throws CenterException {
 		int deleteCount = userLoginLogBo.batchDeleteById(id);

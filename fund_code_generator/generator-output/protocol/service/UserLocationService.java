@@ -14,9 +14,9 @@ import com.alankin.bo.UserLocationBO;
 import com.alankin.entity.UserLocationEntity;
 
 /**
- * 用户定位 业务处理
+ * �û���λ�� 业务处理
  * @author qym
- * @Date 2018-11-30 13:42:28
+ * @Date 2018-12-02 15:09:35
  * @since 1.0
  */@Service
 public class UserLocationService extends BaseService {
@@ -26,9 +26,6 @@ public class UserLocationService extends BaseService {
 
 	/**
 	 * 分页查询列表
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public ListRespVO list(ListReqVO<UserLocationEntity> reqVO) throws CenterException {
 		return userLocationBo.queryPageAutomatic(reqVO);
@@ -36,19 +33,13 @@ public class UserLocationService extends BaseService {
 	
 	/**
 	 * 根据ID查询单条记录
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
-	public Object queryById(@Param("uid") String uid) throws CenterException {
-		return userLocationBo.queryById(uid);
+	public Object queryById(@Param("id") Long id) throws CenterException {
+		return userLocationBo.queryById(id);
 	}
 
 	/**
 	 * 新增
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public Object create(UserLocationEntity userLocation) throws CenterException {
 		userLocationBo.createForValidate(userLocation);
@@ -57,9 +48,6 @@ public class UserLocationService extends BaseService {
 
 	/**
 	 * 修改
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public BaseRespVO update(UserLocationEntity userLocation) throws CenterException {
 		int updateCount = userLocationBo.updateForValidate(userLocation);
@@ -73,12 +61,9 @@ public class UserLocationService extends BaseService {
 
 	/**
 	 * 删除
-	 * 
-	 * @param id
-	 * @return
 	 */
-	public BaseRespVO delete(@Param("uid") String[] uid) throws CenterException {
-		int deleteCount = userLocationBo.batchDeleteById(uid);
+	public BaseRespVO delete(@Param("id") Long[] id) throws CenterException {
+		int deleteCount = userLocationBo.batchDeleteById(id);
 		if (deleteCount > 0) {
 			return new BaseRespVO();
 		} else {

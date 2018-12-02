@@ -14,9 +14,9 @@ import com.alankin.bo.UserExtraBO;
 import com.alankin.entity.UserExtraEntity;
 
 /**
- * 用户额外信息 业务处理
+ * �û�������Ϣ�� 业务处理
  * @author qym
- * @Date 2018-11-30 13:42:28
+ * @Date 2018-12-02 15:09:34
  * @since 1.0
  */@Service
 public class UserExtraService extends BaseService {
@@ -26,9 +26,6 @@ public class UserExtraService extends BaseService {
 
 	/**
 	 * 分页查询列表
-	 * 
-	 * @param reqVO
-	 * @return
 	 */
 	public ListRespVO list(ListReqVO<UserExtraEntity> reqVO) throws CenterException {
 		return userExtraBo.queryPageAutomatic(reqVO);
@@ -37,8 +34,8 @@ public class UserExtraService extends BaseService {
 	/**
 	 * 根据ID查询单条记录
 	 */
-	public Object queryById(@Param("uid") String uid) throws CenterException {
-		return userExtraBo.queryByUid(uid);
+	public Object queryById(@Param("id") Long id) throws CenterException {
+		return userExtraBo.queryById(id);
 	}
 
 	/**
@@ -65,8 +62,8 @@ public class UserExtraService extends BaseService {
 	/**
 	 * 删除
 	 */
-	public BaseRespVO delete(@Param("uid") String[] uid) throws CenterException {
-		int deleteCount = userExtraBo.batchDeleteById(uid);
+	public BaseRespVO delete(@Param("id") Long[] id) throws CenterException {
+		int deleteCount = userExtraBo.batchDeleteById(id);
 		if (deleteCount > 0) {
 			return new BaseRespVO();
 		} else {
