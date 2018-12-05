@@ -19,6 +19,11 @@
             <version>${subSystem.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.alankin</groupId>
+            <artifactId>center-pre-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
         </dependency>
@@ -229,14 +234,7 @@
             <artifactId>poi</artifactId>
             <version>3.6</version>
         </dependency>
-        <dependency>
-            <groupId>com.alankin</groupId>
-            <artifactId>center-pre-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
     </dependencies>
-
-
 
 
     <build>
