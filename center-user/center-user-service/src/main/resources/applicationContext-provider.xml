@@ -12,7 +12,7 @@
 
     <dubbo:service interface="com.alankin.IUserRouteService" ref="routeUserService"/>
     <!--<dubbo:service interface="com.alankin.user.api.IUserRouteService" ref="userRouteService" />-->
-    <!--<dubbo:service interface="com.alankin.user.api.ILoginService" ref="loginService" />-->
+    <dubbo:service interface="com.alankin.ILoginService" ref="loginService" />
     <!--<dubbo:service interface="com.alankin.common.api.ILogApi" ref="logBusinessApiImpl" />-->
     <!--<dubbo:service interface="com.alankin.user.api.IFileUploadService" ref="fileUploadService" />-->
 

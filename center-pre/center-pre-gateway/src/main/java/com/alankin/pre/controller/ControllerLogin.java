@@ -1,5 +1,7 @@
 package com.alankin.pre.controller;
 
+import com.alankin.ILoginService;
+import com.alankin.vo.LoginRespVo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.alankin.common.vo.BaseRespVO;
 import com.alankin.pre.service.SessionHandler;
@@ -26,7 +28,7 @@ public class ControllerLogin {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 //    @Autowired
-//    ILoginService ILoginService;
+    ILoginService loginService;
     @Autowired
     SessionHandler sessionHandler;
     @Autowired
@@ -56,22 +58,22 @@ public class ControllerLogin {
         }
         CookieUtils.delCookie(request, response, Constants.AUTH_CODE_SESSION_ID);
 
-//		LoginRespVo resp = null;
-//		try {
-//
-//			Map reqMap = Utils.parameterMapString(request);
-//			resp = ILoginService.login(reqMap);
-//
-//			// 登录成功，创建session
-//			if (resp.getState() == 0) {
-//				createSession(request, resp);
-//			}
-//
-//		} catch (Exception e) {
-//			logger.error(e.getMessage(), e);
-//			Utils.writeResponesByJsonp(request, response, BaseRespVO.error(e.getMessage()));
-//		}
-//		logger.info("=================返回http响应：{}=================", resp);
+		LoginRespVo resp = null;
+		try {
+
+			Map reqMap = Utils.parameterMapString(request);
+			resp = loginService.login(reqMap);
+
+			// 登录成功，创建session
+			if (resp.getState() == 0) {
+				createSession(request, resp);
+			}
+
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			Utils.writeResponesByJsonp(request, response, BaseRespVO.error(e.getMessage()));
+		}
+		logger.info("=================返回http响应：{}=================", resp);
         Utils.writeResponesByJsonp(request, response, null);
     }
 
@@ -96,16 +98,16 @@ public class ControllerLogin {
 
     }
 
-//    private void createSession(HttpServletRequest request, LoginRespVo resp) {
-//        HttpSession session = request.getSession(true);
-//        // 将系统生成的sessionId作为token返回给前端
-//        resp.setToken(session.getId());
-//        // 在session中保存登录信息
-//        session.setAttribute(Constants.SESSION_AUTHS_KEY, resp.getAuthCheckVo());
-//        session.setAttribute(com.alankin.common.Constants.SESSION_LOGIN_USER, resp.getSessionUser());
-//        session.setAttribute(com.alankin.common.Constants.REQUEST_CLIENT_IP, Utils.getIpAddr(request));
-//        // 在redis中，保存userId和 sessionId 的映射关系
-//        sessionHandler.putSessionId(resp.getLoginUser().getUserId(), session.getId());
-//    }
+    private void createSession(HttpServletRequest request, LoginRespVo resp) {
+        HttpSession session = request.getSession(true);
+        // 将系统生成的sessionId作为token返回给前端
+        resp.setToken(session.getId());
+        // 在session中保存登录信息
+        session.setAttribute(Constants.SESSION_AUTHS_KEY, resp.getAuthCheckVo());
+        session.setAttribute(com.alankin.common.Constants.SESSION_LOGIN_USER, resp.getSessionUser());
+        session.setAttribute(com.alankin.common.Constants.REQUEST_CLIENT_IP, Utils.getIpAddr(request));
+        // 在redis中，保存userId和 sessionId 的映射关系
+        sessionHandler.putSessionId(resp.getLoginUser().getId(), session.getId());
+    }
 
 }

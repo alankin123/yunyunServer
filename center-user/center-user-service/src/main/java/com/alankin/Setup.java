@@ -9,7 +9,7 @@ public class Setup {
         System.setProperty("dubbo.application.name", "center-user-local");
         System.setProperty("dubbo.consumer.timeout", "80000");
         System.setProperty("dubbo.consumer.retries", "0");
-        System.setProperty("dubbo.registry.address", "zookeeper://192.168.140.128:2181?register=true");
+        System.setProperty("dubbo.registry.address", "zookeeper://192.168.235.130:2181?register=true");
         System.setProperty("dubbo.protocol.port", "20101");
         System.out.println("初始化spring容器");
         // 加载spring容器
